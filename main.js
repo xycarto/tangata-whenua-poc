@@ -152,7 +152,7 @@ var vectorMap = new ol.layer.VectorTile({
 // Add base map to HTML map container
 var map = new ol.Map({
   target: 'map',
-  layers: [layer, vectorMap],
+  layers: [layer],
   scale: resolutions,
   view: new ol.View({
     center: ol.proj.transform(
