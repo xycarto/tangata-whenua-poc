@@ -136,8 +136,10 @@ var placesource = new ol.source.VectorTile({
   extent: [827933.23, 3729820.29, 3195373.59, 7039943.58],
   format: new ol.format.MVT(),
   projection: ol.proj.get('EPSG:2193'),
-  url: "http://xycarto.tangata.whenua.tiles.s3-ap-southeast-2.amazonaws.com/tangataWhenua-vectorTiles/tangataWhenua-vectorTiles/20210516/{z}/{x}/{y}.pbf"
+  url: "https://xycarto.github.io/tangata-whenua-poc/tangataWhenua-vectorTiles/tangataWhenua-vectorTiles/20210516/{z}/{x}/{y}.pbf"
 });
+
+//https://xycarto.github.io/tangata-whenua-poc/
 
 var vectorMap = new ol.layer.VectorTile({
   declutter: true,
@@ -152,7 +154,7 @@ var vectorMap = new ol.layer.VectorTile({
 // Add base map to HTML map container
 var map = new ol.Map({
   target: 'map',
-  layers: [layer],
+  layers: [layer, vectorMap],
   scale: resolutions,
   view: new ol.View({
     center: ol.proj.transform(
