@@ -1,0 +1,60 @@
+{
+  "version": 8,
+  "name": "placenames_poc.placenames_poc",
+  "center": [173.6692090634335,-34.98438032966155],
+  "zoom": 8,
+  "metadata": {
+    "mapbox:autocomposite": true
+  },
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "sources": {
+    "placenames_poc.placenames_poc": {
+      "type": "vector",
+      "tiles": ["http://localhost:8080/vectorTiles/placenames_poc.placenames_poc/{z}/{x}/{y}.pbf"],
+      "minzoom": 0
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "rgba(0,0,0,0)"
+      }
+    },
+    {
+        "id": "harbour",
+        "type": "symbol",
+        "source": "placenames_poc.placenames_poc",
+        "source-layer": "placenames_poc.placenames_poc",
+        "filter": ["==", "feat_type", "harbour"],
+        "layout": {
+          "text-field": ["get", "name"],
+          "text-size": ["*", ["get", "size"], 2],
+          "text-font": ["Myriad Pro", "sans-serif Italic"],
+          "text-variable-anchor": ["top", "bottom", "left", "right"]
+        },
+        "paint": {
+          "text-color": "#5990A8"
+        }
+    },
+    {
+      "id": "island",
+      "type": "symbol",
+      "source": "placenames_poc.placenames_poc",
+      "source-layer": "placenames_poc.placenames_poc",
+      "filter": ["==", "feat_type", "island"],
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-size": ["*", ["get", "size"], 2],
+        "text-font": ["Myriad Pro", "sans-serif Normal"],
+        "text-variable-anchor": ["top", "bottom", "left", "right"],
+        "text-radial-offset": 2.5,
+        "text-justify": "auto"
+      },
+      "paint": {
+        "text-color": "#333333"
+      }
+    }
+  ]
+}
