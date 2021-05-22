@@ -90,42 +90,121 @@ var layer = new ol.layer.Tile({
 };*/
 
 var fill = new ol.style.Fill({
-  color: '#000000'
+  color: '#333333'
 });
 var stroke = new ol.style.Stroke({
-  color: '#000000',
+  color: '#333333',
   width: 0
 });
+/*var iconStyle = new ol.style.Style({
+  image: new ol.style.Icon({
+    anchor: [0.5, 0.5],
+    anchorXUnits: 'fraction',
+    anchorYUnits: 'pixels',
+    src: './sprites/sprites.png',
+  }),
+});*/
 
-var style = new ol.style.Style({
-    image: new ol.style.Circle({
-      fill: fill,
-      stroke: stroke,
-      radius: 3
-    }),
-    fill: fill,
-    stroke: stroke,
+var font='13px "Open Sans", "Arial Unicode MS", "sans-serif"'
+var fontItalic='italic 13px "Open Sans", "Arial Unicode MS", "sans-serif"'
+
+var waterStyle = new ol.style.Style({
+  text: new ol.style.Text({
+    font: fontItalic,
+    placement: 'point',
+    fill: new ol.style.Fill({color: '#289edc'}),
+    stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
+    textAlign: 'center',
+  }), 
+});
+
+var bayStyle = new ol.style.Style({
+  text: new ol.style.Text({
+    font: 'italic 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    placement: 'point',
+    fill: new ol.style.Fill({color: '#289edc'}),
+    stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
+    textAlign: 'center',
+  }), 
+});
+
+var islandStyle = new ol.style.Style({
     text: new ol.style.Text({
-      font: 'bold 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+      font: 'italic 13px "Open Sans", "Arial Unicode MS", "sans-serif"',
       placement: 'point',
-      fill: new ol.style.Fill({color: '#fff'}),
-      stroke: new ol.style.Stroke({color: '#000', width: 2}),
-      textAlign: 'left',
-      textBaseline: 'bottom',
-      offsetX: 3,
-      offsetY: -3,
+      fill: new ol.style.Fill({color: '#333333'}),
+      textAlign: 'center'
     }), 
 });
 
+var hillStyle = new ol.style.Style({
+  image: new ol.style.RegularShape({
+      fill: fill,
+      stroke: stroke,
+      points: 3,
+      radius: 3,
+      angle: 0,
+  }),
+  text: new ol.style.Text({
+    font: '11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    placement: 'point',
+    fill: new ol.style.Fill({color: '#333333'}),
+    textAlign: 'left',
+    textBaseline: 'bottom',
+    offsetX: 1.5,
+    offsetY: -1.5,
+  }), 
+});
+
+var pointStyle = new ol.style.Style({
+  fill: fill,
+  stroke: stroke,
+  image: new ol.style.Circle({
+      fill: fill,
+      radius: 3,
+  }),
+  text: new ol.style.Text({
+    font: 'italic 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    placement: 'point',
+    fill: new ol.style.Fill({color: '#333333'}),
+    textAlign: 'right',
+    textBaseline: 'bottom',
+    offsetX: -1.5,
+    offsetY: -1.5,
+  }), 
+});
+
 var styleFunction = function(feature) {
-  style.getText().setText(feature.get('name'));
-  return style;
+  if ( feature.get('feat_type') == 'harbour') {
+    waterStyle.getText().setText(feature.get('name'));
+    return waterStyle;
+    } else if ( feature.get('feat_type') == 'island' && feature.get('name') != 'Matanehunehu')
+    {
+      islandStyle.getText().setText(feature.get('name'));
+      return islandStyle;
+    } else if ( feature.get('feat_type') == 'point' )
+    {
+      pointStyle.getText().setText(feature.get('name'));
+      return pointStyle;
+    } else if ( feature.get('feat_type') == 'bay' && map.getView().getZoom() > 3 )
+    {
+      bayStyle.getText().setText(feature.get('name'));
+      return bayStyle;
+    } else if ( feature.get('feat_type') == 'hill' && map.getView().getZoom() > 3 )
+    {
+      hillStyle.getText().setText(feature.get('name'));
+      return hillStyle;
+    } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getZoom() > 3 )
+    {
+      islandStyle.getText().setText(feature.get('name'));
+      return islandStyle;
+    }
 }
 
-var placesource = new ol.source.VectorTile({
+var placeSource = new ol.source.VectorTile({
   cacheSize: 0,
   overlaps: true,
-  tilePixelRatio: 1, // oversampling when > 1
+  tilePixelRatio: 2, // oversampling when > 1
   tileGrid: new ol.tilegrid.TileGrid({ 
     origin: [-1000000, 10000000],
     maxZoom: 12,
@@ -142,12 +221,12 @@ var placesource = new ol.source.VectorTile({
 //https://xycarto.github.io/tangata-whenua-poc/
 
 var vectorMap = new ol.layer.VectorTile({
-  declutter: true,
-  source: placesource,
+  //declutter: true,
+  source: placeSource,
   renderMode: 'vector',
-  zIndex: 10,
   style: styleFunction,
-  renderBuffer: 127,
+  renderBuffer: 300,
+  updateWhileAnimating: true,
   
 })
 
