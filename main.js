@@ -105,22 +105,25 @@ var stroke = new ol.style.Stroke({
   }),
 });*/
 
-var font='13px "Open Sans", "Arial Unicode MS", "sans-serif"'
-var fontItalic='italic 13px "Open Sans", "Arial Unicode MS", "sans-serif"'
+var font='1.1em Calibri,sans-serif'
+var fontItalic='italic 1.1em Calibri, sans-serif'
+var fontBay='italic 0.9em Calibri, sans-serif'
+var fontHill='0.9em Calibri, sans-serif'
+var fontSmallIsland='italic 0.9em Calibri, sans-serif'
 
 var waterStyle = new ol.style.Style({
   text: new ol.style.Text({
-    font: fontItalic,
     placement: 'point',
     fill: new ol.style.Fill({color: '#289edc'}),
     stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
     textAlign: 'center',
+    font: fontItalic
   }), 
 });
 
 var bayStyle = new ol.style.Style({
   text: new ol.style.Text({
-    font: 'italic 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    font: fontBay,
     placement: 'point',
     fill: new ol.style.Fill({color: '#289edc'}),
     stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
@@ -130,7 +133,6 @@ var bayStyle = new ol.style.Style({
 
 var islandStyle = new ol.style.Style({
     text: new ol.style.Text({
-      font: 'italic 13px "Open Sans", "Arial Unicode MS", "sans-serif"',
       placement: 'point',
       fill: new ol.style.Fill({color: '#333333'}),
       textAlign: 'center'
@@ -140,7 +142,7 @@ var islandStyle = new ol.style.Style({
 var hillStyle = new ol.style.Style({
   zIndex:10,
   text: new ol.style.Text({
-    font: '11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    font: fontHill,
     placement: 'point',
     fill: new ol.style.Fill({color: '#333333'}),
     textAlign: 'left',
@@ -152,7 +154,7 @@ var hillStyle = new ol.style.Style({
     fill: fill,
     stroke: stroke,
     points: 3,
-    radius: 3,
+    radius: 4,
     angle: 0,
   })
 });
@@ -162,16 +164,16 @@ var pointStyle = new ol.style.Style({
   stroke: stroke,
   image: new ol.style.Circle({
       fill: fill,
-      radius: 3,
+      radius: 4,
   }),
   text: new ol.style.Text({
-    font: 'italic 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    font: fontSmallIsland,
     placement: 'point',
     fill: new ol.style.Fill({color: '#333333'}),
     textAlign: 'right',
     textBaseline: 'bottom',
     offsetX: -1.5,
-    offsetY: -1.5,
+    offsetY: -2.0,
   }), 
 });
 
@@ -181,22 +183,22 @@ var paStyle = new ol.style.Style({
       fill: new ol.style.Fill({
         color: '#8b0000'
       }),
-      radius: 3,
+      radius: 4,
   }),
   text: new ol.style.Text({
-    font: 'italic 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    font: fontHill,
     placement: 'point',
     fill: new ol.style.Fill({color: '#333333'}),
     textAlign: 'right',
     textBaseline: 'bottom',
     offsetX: -1.5,
-    offsetY: -1.5,
+    offsetY: -2.0,
   }), 
 });
 
 var peninsulaStyle = new ol.style.Style({
   text: new ol.style.Text({
-    font:  '13px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    font:  font,
     placement: 'point',
     fill: new ol.style.Fill({color: '#333333'})
   }), 
@@ -204,38 +206,40 @@ var peninsulaStyle = new ol.style.Style({
 
 var styleFunction = function(feature) {
   if ( feature.get('feat_type') == 'harbour') {
-    waterStyle.getText().setText(feature.get('name'));
-    return waterStyle;
-    } else if ( feature.get('feat_type') == 'island' && feature.get('name') != 'Matanehunehu')
+      waterStyle.getText().setText(feature.get('name'));
+      return waterStyle;
+  } else if ( feature.get('feat_type') == 'island' && feature.get('name') != 'Matanehunehu')
     {
       islandStyle.getText().setText(feature.get('name'));
+      islandStyle.getText().setFont(fontItalic);
       return islandStyle;
-    } else if ( feature.get('feat_type') == 'hill' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'hill' && map.getView().getZoom() > 3 )
     {
       hillStyle.getText().setText(feature.get('name'));
       return hillStyle;
-    } else if ( feature.get('feat_type') == 'point' )
+  } else if ( feature.get('feat_type') == 'point' )
     {
       pointStyle.getText().setText(feature.get('name'));
       return pointStyle;
-    } else if ( feature.get('feat_type') == 'bay' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'bay' && map.getView().getZoom() > 3 )
     {
       bayStyle.getText().setText(feature.get('name'));
       return bayStyle;
-    } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getZoom() > 3 )
     {
       islandStyle.getText().setText(feature.get('name'));
+      islandStyle.getText().setFont(fontSmallIsland);
       return islandStyle;
-    } else if ( feature.get('feat_type') == 'pā site' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'pā site' && map.getView().getZoom() > 3 )
     {
       paStyle.getText().setText(feature.get('name'));
       return paStyle;
-    }else if ( feature.get('feat_type') == 'peninsula' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'peninsula' && map.getView().getZoom() > 3 )
     {
       peninsulaStyle.getText().setText(feature.get('name'));
       return peninsulaStyle;
-    }
-  } 
+  }
+}; 
 
 var placeSource = new ol.source.VectorTile({
   cacheSize: 0,
@@ -302,7 +306,7 @@ map.addOverlay(overlay);
 // Get JSON for vector tile styles and apply styling to vector tiles
 /*fetch('./styleText.json').then(function(response) {
   response.json().then(function(glStyle) {
-    olms.applyStyle(vectorMap, glStyle, 'placenames_poc.placenames_poc');
+    olms.applyStyle(vectorMap, glStyle, 'placeNames');
   });
 });*/
 
