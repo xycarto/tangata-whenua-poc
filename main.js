@@ -174,6 +174,24 @@ var pointStyle = new ol.style.Style({
   }), 
 });
 
+var paStyle = new ol.style.Style({
+  image: new ol.style.Circle({
+      fill: new ol.style.Fill({
+        color: '#8b0000'
+      }),
+      radius: 3,
+  }),
+  text: new ol.style.Text({
+    font: 'italic 11px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    placement: 'point',
+    fill: new ol.style.Fill({color: '#333333'}),
+    textAlign: 'right',
+    textBaseline: 'bottom',
+    offsetX: -1.5,
+    offsetY: -1.5,
+  }), 
+});
+
 var styleFunction = function(feature) {
   if ( feature.get('feat_type') == 'harbour') {
     waterStyle.getText().setText(feature.get('name'));
@@ -198,6 +216,10 @@ var styleFunction = function(feature) {
     {
       islandStyle.getText().setText(feature.get('name'));
       return islandStyle;
+    } else if ( feature.get('feat_type') == 'pā site' && map.getView().getZoom() > 3 )
+    {
+      paStyle.getText().setText(feature.get('name'));
+      return paStyle;
     }
 }
 
