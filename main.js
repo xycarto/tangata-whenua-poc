@@ -138,13 +138,7 @@ var islandStyle = new ol.style.Style({
 });
 
 var hillStyle = new ol.style.Style({
-  image: new ol.style.RegularShape({
-      fill: fill,
-      stroke: stroke,
-      points: 3,
-      radius: 3,
-      angle: 0,
-  }),
+  zIndex:10,
   text: new ol.style.Text({
     font: '11px "Open Sans", "Arial Unicode MS", "sans-serif"',
     placement: 'point',
@@ -154,6 +148,13 @@ var hillStyle = new ol.style.Style({
     offsetX: 1.5,
     offsetY: -1.5,
   }), 
+  image: new ol.style.RegularShape({
+    fill: fill,
+    stroke: stroke,
+    points: 3,
+    radius: 3,
+    angle: 0,
+  })
 });
 
 var pointStyle = new ol.style.Style({
@@ -175,6 +176,7 @@ var pointStyle = new ol.style.Style({
 });
 
 var paStyle = new ol.style.Style({
+  zIndex:20,
   image: new ol.style.Circle({
       fill: new ol.style.Fill({
         color: '#8b0000'
@@ -192,6 +194,14 @@ var paStyle = new ol.style.Style({
   }), 
 });
 
+var peninsulaStyle = new ol.style.Style({
+  text: new ol.style.Text({
+    font:  '13px "Open Sans", "Arial Unicode MS", "sans-serif"',
+    placement: 'point',
+    fill: new ol.style.Fill({color: '#333333'})
+  }), 
+});
+
 var styleFunction = function(feature) {
   if ( feature.get('feat_type') == 'harbour') {
     waterStyle.getText().setText(feature.get('name'));
@@ -200,6 +210,10 @@ var styleFunction = function(feature) {
     {
       islandStyle.getText().setText(feature.get('name'));
       return islandStyle;
+    } else if ( feature.get('feat_type') == 'hill' && map.getView().getZoom() > 3 )
+    {
+      hillStyle.getText().setText(feature.get('name'));
+      return hillStyle;
     } else if ( feature.get('feat_type') == 'point' )
     {
       pointStyle.getText().setText(feature.get('name'));
@@ -208,10 +222,6 @@ var styleFunction = function(feature) {
     {
       bayStyle.getText().setText(feature.get('name'));
       return bayStyle;
-    } else if ( feature.get('feat_type') == 'hill' && map.getView().getZoom() > 3 )
-    {
-      hillStyle.getText().setText(feature.get('name'));
-      return hillStyle;
     } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getZoom() > 3 )
     {
       islandStyle.getText().setText(feature.get('name'));
@@ -220,8 +230,12 @@ var styleFunction = function(feature) {
     {
       paStyle.getText().setText(feature.get('name'));
       return paStyle;
+    }else if ( feature.get('feat_type') == 'peninsula' && map.getView().getZoom() > 3 )
+    {
+      peninsulaStyle.getText().setText(feature.get('name'));
+      return peninsulaStyle;
     }
-}
+  } 
 
 var placeSource = new ol.source.VectorTile({
   cacheSize: 0,
@@ -243,11 +257,11 @@ var placeSource = new ol.source.VectorTile({
 //https://xycarto.github.io/tangata-whenua-poc/
 
 var vectorMap = new ol.layer.VectorTile({
-  //declutter: true,
+  declutter: true,
+  allowOverlap: false,
   source: placeSource,
   renderMode: 'vector',
   style: styleFunction,
-  renderBuffer: 300,
   updateWhileAnimating: true,
   
 })
