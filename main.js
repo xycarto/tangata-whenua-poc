@@ -105,11 +105,11 @@ var stroke = new ol.style.Stroke({
   }),
 });*/
 
-var font='1.1em Calibri,sans-serif'
-var fontItalic='italic 1.1em Calibri, sans-serif'
-var fontBay='italic 0.9em Calibri, sans-serif'
-var fontHill='0.9em Calibri, sans-serif'
-var fontSmallIsland='italic 0.9em Calibri, sans-serif'
+var font='1.1em Verdana,sans-serif'
+var fontItalic='italic 1.1em Verdana, sans-serif'
+var fontBay='italic 0.9em Verdana, sans-serif'
+var fontHill='0.9em Verdana, sans-serif'
+var fontSmallIsland='italic 0.9em Verdana, sans-serif'
 
 var waterStyle = new ol.style.Style({
   text: new ol.style.Text({
@@ -123,14 +123,14 @@ var waterStyle = new ol.style.Style({
 });
 
 var bayStyle = new ol.style.Style({
-  zIndex:8,
+  zIndex:5,
   text: new ol.style.Text({
     font: fontBay,
     placement: 'point',
     fill: new ol.style.Fill({color: '#289edc'}),
     stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
     textAlign: 'center',
-    padding: [10,10,10,10]
+    padding: [15,15,15,15]
   }), 
 });
 
@@ -229,7 +229,7 @@ var styleFunction = function(feature) {
     {
       bayStyle.getText().setText(feature.get('name'));
       return bayStyle;
-  } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getResolution() <= 140 )
+  } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getResolution() <= 28 )
     {
       islandStyle.getText().setText(feature.get('name'));
       islandStyle.getText().setFont(fontSmallIsland);
@@ -248,7 +248,7 @@ var styleFunction = function(feature) {
 var placeSource = new ol.source.VectorTile({
   cacheSize: 0,
   overlaps: true,
-  tilePixelRatio: 2, // oversampling when > 1
+  tilePixelRatio: 1, // oversampling when > 1
   tileGrid: new ol.tilegrid.TileGrid({ 
     origin: [-1000000, 10000000],
     maxZoom: 12,
@@ -271,8 +271,8 @@ var vectorMap = new ol.layer.VectorTile({
   renderMode: 'vector',
   renderBuffer: 127,
   style: styleFunction,
-  updateWhileAnimating: true,
-  updateWhileInteracting: true
+  updateWhileAnimating: false,
+  updateWhileInteracting: false
   
 })
 
@@ -292,7 +292,7 @@ var map = new ol.Map({
     //minZoom: 4,
     //maxZoom: 12,
     projection: proj2193,
-    //resolutions: resolutions,
+    resolutions: resolutions,
     resolution: 140,
     minResolution: 1.4,
     maxResolution: 280,
