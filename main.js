@@ -105,11 +105,11 @@ var stroke = new ol.style.Stroke({
   }),
 });*/
 
-var font='1.1em Verdana,sans-serif'
-var fontItalic='italic 1.1em Verdana, sans-serif'
-var fontBay='italic 0.9em Verdana, sans-serif'
-var fontHill='0.9em Verdana, sans-serif'
-var fontSmallIsland='italic 0.9em Verdana, sans-serif'
+var font='1.0em Verdana,sans-serif'
+var fontItalic='italic 1.0em Verdana, sans-serif'
+var fontBay='italic 0.75em Verdana, sans-serif'
+var fontHill='0.75em Verdana, sans-serif'
+var fontSmallIsland='italic 0.75em Verdana, sans-serif'
 
 var waterStyle = new ol.style.Style({
   text: new ol.style.Text({
