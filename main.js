@@ -117,7 +117,8 @@ var waterStyle = new ol.style.Style({
     fill: new ol.style.Fill({color: '#289edc'}),
     stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
     textAlign: 'center',
-    font: fontItalic
+    font: fontItalic,
+    padding: [10,10,10,10]
   }), 
 });
 
@@ -128,6 +129,7 @@ var bayStyle = new ol.style.Style({
     fill: new ol.style.Fill({color: '#289edc'}),
     stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
     textAlign: 'center',
+    padding: [10,10,10,10]
   }), 
 });
 
@@ -267,7 +269,7 @@ var vectorMap = new ol.layer.VectorTile({
   renderMode: 'vector',
   renderBuffer: 127,
   style: styleFunction,
-  updateWhileAnimating: false,
+  updateWhileAnimating: true,
   updateWhileInteracting: true
   
 })
