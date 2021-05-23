@@ -283,7 +283,7 @@ var map = new ol.Map({
   scale: resolutions,
   view: new ol.View({
     center: ol.proj.transform(
-      [173.2,-35.0],
+      [173.6,-35.0],
       "EPSG:4326",
       "EPSG:2193"
     ),
