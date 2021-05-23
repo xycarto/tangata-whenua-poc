@@ -123,6 +123,7 @@ var waterStyle = new ol.style.Style({
 });
 
 var bayStyle = new ol.style.Style({
+  zIndex:8,
   text: new ol.style.Text({
     font: fontBay,
     placement: 'point',
@@ -151,6 +152,7 @@ var hillStyle = new ol.style.Style({
     textBaseline: 'bottom',
     offsetX: 15.0,
     offsetY: -1.5,
+    padding: [10,10,10,10]
   }), 
   image: new ol.style.RegularShape({
     fill: fill,
@@ -215,7 +217,7 @@ var styleFunction = function(feature) {
       islandStyle.getText().setText(feature.get('name'));
       islandStyle.getText().setFont(fontItalic);
       return islandStyle;
-  } else if ( feature.get('feat_type') == 'hill' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'hill' && map.getView().getResolution() <= 140 )
     {
       hillStyle.getText().setText(feature.get('name'));
       return hillStyle;
@@ -223,20 +225,20 @@ var styleFunction = function(feature) {
     {
       pointStyle.getText().setText(feature.get('name'));
       return pointStyle;
-  } else if ( feature.get('feat_type') == 'bay' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'bay' && map.getView().getResolution() < 140 )
     {
       bayStyle.getText().setText(feature.get('name'));
       return bayStyle;
-  } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('name') == 'Matanehunehu' && map.getView().getResolution() <= 140 )
     {
       islandStyle.getText().setText(feature.get('name'));
       islandStyle.getText().setFont(fontSmallIsland);
       return islandStyle;
-  } else if ( feature.get('feat_type') == 'pā site' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'pā site' && map.getView().getResolution() < 140 )
     {
       paStyle.getText().setText(feature.get('name'));
       return paStyle;
-  } else if ( feature.get('feat_type') == 'peninsula' && map.getView().getZoom() > 3 )
+  } else if ( feature.get('feat_type') == 'peninsula' && map.getView().getResolution() < 70 )
     {
       peninsulaStyle.getText().setText(feature.get('name'));
       return peninsulaStyle;
@@ -293,7 +295,7 @@ var map = new ol.Map({
     //resolutions: resolutions,
     resolution: 140,
     minResolution: 1.4,
-    maxResolution: 560,
+    maxResolution: 280,
     constrainResolution: true,
   })
 });
@@ -301,6 +303,8 @@ var map = new ol.Map({
 map.on("moveend", function() {
   var zoom = map.getView().getZoom();
   console.log(zoom);
+  var reso = map.getView().getResolution();
+  console.log(reso);
 });
 
 
