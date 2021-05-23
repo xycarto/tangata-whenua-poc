@@ -66,7 +66,7 @@ var matrixIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 // Tile Services Map
 var urlTemplate =
-"https://xycarto.tangata.whenua.tiles.s3-ap-southeast-2.amazonaws.com/tangataWhenua-rasterTiles/20210516/{z}/{x}/{y}.png";
+"http://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-rasterTiles/20210516/{z}/{x}/{y}.png";
 
 // Set raster layer
 var layer = new ol.layer.Tile({
@@ -255,7 +255,7 @@ var placeSource = new ol.source.VectorTile({
   extent: [827933.23, 3729820.29, 3195373.59, 7039943.58],
   format: new ol.format.MVT(),
   projection: ol.proj.get('EPSG:2193'),
-  url: "https://xycarto.tangata.whenua.tiles.s3-ap-southeast-2.amazonaws.com/tangataWhenua-vectorTiles/tangataWhenua-vectorTiles/20210516/{z}/{x}/{y}.pbf"
+  url: "http://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-vectorTiles/20210516/{z}/{x}/{y}.pbf"
 });
 
 //https://xycarto.github.io/tangata-whenua-poc/
