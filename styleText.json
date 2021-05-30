@@ -2,7 +2,7 @@
   "version": 8,
   "name": "placeNames",
   "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
-  "sprites": "https://xycarto.github.io/vectortile-repo/sprites/sprites",
+  "sprite": "https://xycarto.github.io/vectortile-repo/sprites/sprites",
   "sources": {
     "placeNames": {
       "type": "vector"
@@ -31,6 +31,23 @@
       "filter": ["==", "feat_type", "island"],
       "layout": {
         "icon-image": "accommodation_camping"
+      }
+    },
+    {
+      "id": "island",
+      "type": "symbol",
+      "source": "placeNames",
+      "source-layer": "placenames_poc.placenames_poc",
+      "filter": ["==", "feat_type", "island"],
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-font": ["Myriad Pro", "sans-serif Italic"],
+        "text-radial-offset": 10,
+        "text-anchor": "left",
+        "text-justify": "left"
+      },
+      "paint": {
+        "text-color": "#5990A8"
       }
     }
   ]

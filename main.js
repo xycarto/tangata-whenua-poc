@@ -4,6 +4,8 @@ var content = document.getElementById('popup-content');
 var closer = document.getElementById('popup-closer');
 var popTitle = document.getElementById('popTitle');
 var popStory = document.getElementById('popStory');
+var popFeat = document.getElementById('popFeat');
+var popOfficial = document.getElementById('popOfficial');
 
 // Layer for pop up
 var overlay = new ol.Overlay({
@@ -39,7 +41,7 @@ var proj2193 = new ol.proj.Projection({
 	extent: [827933.23, 3729820.29, 3195373.59, 7039943.58]
 });
 
-// NZTM tile matrix origin, resolution and matrixId definitions. See the LDS tile set definition document for more information
+// NZTM tile matrix origin, resolution and matrixId definitions. See the LDS tile set definition document for more information (https://www.linz.govt.nz/data/linz-data-service/guides-and-documentation/nztm2000-map-tile-service-schema)
 var origin = [-1000000, 10000000];
 var resolutions = [
     8960,
@@ -66,7 +68,9 @@ var matrixIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 // Tile Services Map
 var urlTemplate =
-"https://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-rasterTiles/20210516/{z}/{x}/{y}.png";
+"https://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-rasterTiles/20210530/{z}/{x}/{y}.png";
+
+//var urlTemplate = "http://localhost:3030/POC/{z}/{x}/{y}.png"
 
 // Set raster layer
 var layer = new ol.layer.Tile({
@@ -79,7 +83,7 @@ var layer = new ol.layer.Tile({
       resolutions: resolutions,
       matrixIds: matrixIds,
       extent: [827933.23, 3729820.29, 3195373.59, 7039943.58],
-      tileSize: [512, 512],
+      tileSize: [256, 256],
     })
   })
 });
@@ -90,32 +94,37 @@ var layer = new ol.layer.Tile({
 };*/
 
 var fill = new ol.style.Fill({
-  color: '#333333'
+  color: '#e3e1d8'
 });
 var stroke = new ol.style.Stroke({
   color: '#333333',
   width: 0
 });
-/*var iconStyle = new ol.style.Style({
-  image: new ol.style.Icon({
-    anchor: [0.5, 0.5],
-    anchorXUnits: 'fraction',
-    anchorYUnits: 'pixels',
-    src: './sprites/sprites.png',
-  }),
-});*/
 
-var font='1.0em Verdana,sans-serif'
-var fontItalic='italic 1.0em Verdana, sans-serif'
-var fontBay='italic 0.75em Verdana, sans-serif'
-var fontHill='0.75em Verdana, sans-serif'
-var fontSmallIsland='italic 0.75em Verdana, sans-serif'
+var textStroke = new ol.style.Stroke({
+  color: '#333333',
+  width: 2.25
+});
+
+var waterFill = new ol.style.Fill({
+  color: '#4c6f83'
+});
+var waterStroke = new ol.style.Stroke({
+  color: '#e9eced',
+  width: 2.5
+});
+
+var font='1.3em Architects Daughter, cursive'
+var fontItalic='bold italic 1.3em Architects Daughter, cursive'
+var fontBay='italic 1.0em Architects Daughter, cursive'
+var fontHill='1.0em Architects Daughter, cursive'
+var fontSmallIsland='italic 1.0em Architects Daughter, cursive'
 
 var waterStyle = new ol.style.Style({
   text: new ol.style.Text({
     placement: 'point',
-    fill: new ol.style.Fill({color: '#289edc'}),
-    stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
+    fill: waterFill,
+    stroke: waterStroke,
     textAlign: 'center',
     font: fontItalic,
     padding: [10,10,10,10]
@@ -127,8 +136,8 @@ var bayStyle = new ol.style.Style({
   text: new ol.style.Text({
     font: fontBay,
     placement: 'point',
-    fill: new ol.style.Fill({color: '#289edc'}),
-    stroke: new ol.style.Stroke({color: '#eaf5f8', width: 2}),
+    fill: waterFill,
+    stroke: waterStroke,
     textAlign: 'center',
     padding: [15,15,15,15]
   }), 
@@ -137,7 +146,8 @@ var bayStyle = new ol.style.Style({
 var islandStyle = new ol.style.Style({
     text: new ol.style.Text({
       placement: 'point',
-      fill: new ol.style.Fill({color: '#333333'}),
+      fill: fill,
+      stroke: textStroke,
       textAlign: 'center'
     }), 
 });
@@ -147,7 +157,8 @@ var hillStyle = new ol.style.Style({
   text: new ol.style.Text({
     font: fontHill,
     placement: 'point',
-    fill: new ol.style.Fill({color: '#333333'}),
+    fill: fill,
+    stroke: textStroke,
     textAlign: 'left',
     textBaseline: 'bottom',
     offsetX: 15.0,
@@ -156,9 +167,12 @@ var hillStyle = new ol.style.Style({
   }), 
   image: new ol.style.RegularShape({
     fill: fill,
-    stroke: stroke,
+    stroke: new ol.style.Stroke({
+      color: '#333333',
+      width: 0.5
+    }),
     points: 3,
-    radius: 4,
+    radius: 4.5,
     angle: 0,
   })
 });
@@ -168,12 +182,17 @@ var pointStyle = new ol.style.Style({
   stroke: stroke,
   image: new ol.style.Circle({
       fill: fill,
-      radius: 4,
+      radius: 3,
+      stroke: new ol.style.Stroke({
+        color: '#333333',
+        width: 0.5
+      })
   }),
   text: new ol.style.Text({
     font: fontSmallIsland,
     placement: 'point',
-    fill: new ol.style.Fill({color: '#333333'}),
+    fill: fill,
+    stroke: textStroke,
     textAlign: 'right',
     textBaseline: 'bottom',
     offsetX: -15.0,
@@ -185,14 +204,19 @@ var paStyle = new ol.style.Style({
   zIndex:20,
   image: new ol.style.Circle({
       fill: new ol.style.Fill({
-        color: '#8b0000'
+        color: '#ac6f78'
+      }),
+      stroke: new ol.style.Stroke({
+        color: '#333333',
+        width: 0.5
       }),
       radius: 4,
   }),
   text: new ol.style.Text({
     font: fontHill,
     placement: 'point',
-    fill: new ol.style.Fill({color: '#333333'}),
+    fill: fill,
+    stroke: textStroke,
     textAlign: 'right',
     textBaseline: 'bottom',
     offsetX: -15.0,
@@ -204,7 +228,8 @@ var peninsulaStyle = new ol.style.Style({
   text: new ol.style.Text({
     font:  font,
     placement: 'point',
-    fill: new ol.style.Fill({color: '#333333'})
+    fill: fill,
+    stroke: textStroke,
   }), 
 });
 
@@ -261,8 +286,6 @@ var placeSource = new ol.source.VectorTile({
   projection: ol.proj.get('EPSG:2193'),
   url: "https://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-vectorTiles/20210516/{z}/{x}/{y}.pbf"
 });
-
-//https://xycarto.github.io/tangata-whenua-poc/
 
 var vectorMap = new ol.layer.VectorTile({
   declutter: true,
@@ -335,9 +358,20 @@ function showInfo(evt) {
 
   console.log(features[0].getProperties().name);
   var title = features[0].getProperties().name;
+  var feat = features[0].getProperties().feat_type;
   var story = features[0].getProperties().desc_text;
+  var official = features[0].getProperties().offcl_name;
+  var url = features[0].getProperties().url;
+  popup.style.color = '#393939';
+  popup.style.fontFamily = 'Montserrat, sans-serif';
   popTitle.innerHTML = title + '<hr>';
+  popFeat.innerHTML = feat.charAt(0).toUpperCase() + feat.slice(1);
   popStory.innerHTML = story;
+  popOfficial.innerHTML = 'Official Name: ' + '<a href="' + url + '">' + official + '</a>';
+  popTitle.style.fontWeight = 'bold';
+  //popStory.style.font = '1.0em Montserrat, sans-serif';
+  popFeat.style.fontStyle = 'italic';
+  //popOfficial.style.font = '1.0em Montserrat, sans-serif';
 
   overlay.setPosition(coordinate);
 };
