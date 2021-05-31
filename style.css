@@ -7,11 +7,23 @@ html, body {
 
 .map {
   height: 100%;
+  position: relative;
 }
 
 hr {
   width: 90%;
   border: 0.5px solid #676767;
+}
+
+.title {
+  position: absolute;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  color: #ffffff;
+  background: rgba(30,44,51,0.15);
+  z-index: 2;
 }
 
 #popup {
@@ -40,6 +52,7 @@ hr {
 }
 
 #popOfficial {
+  font-size: 0.75em;
   color: #555555;
 }
 
@@ -83,4 +96,8 @@ hr {
 }
 .ol-popup-closer:after {
   content: "✖";
+}
+
+.ol-zoom{
+  top: 45px;
 }
