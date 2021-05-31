@@ -11,6 +11,7 @@ var popOfficial = document.getElementById('popOfficial');
 var overlay = new ol.Overlay({
   element: container,
   autoPan: true,
+  positioning: 'TOP_CENTER',
   autoPanAnimation: {
     duration: 250,
   },
