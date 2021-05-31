@@ -1,4 +1,4 @@
-// pop-up elemants
+// pop-up elements
 var container = document.getElementById('popup');
 var content = document.getElementById('popup-content');
 var closer = document.getElementById('popup-closer');
@@ -362,15 +362,15 @@ function showInfo(evt) {
   var story = features[0].getProperties().desc_text;
   var official = features[0].getProperties().offcl_name;
   var url = features[0].getProperties().url;
-  popup.style.color = '#393939';
-  popup.style.fontFamily = 'Montserrat, sans-serif';
-  popTitle.innerHTML = title + '<hr>';
-  popFeat.innerHTML = feat.charAt(0).toUpperCase() + feat.slice(1);
+  //popup.style.color = '#393939';
+  //popup.style.fontFamily = 'Montserrat, sans-serif';
+  popTitle.innerHTML = title;
+  popFeat.innerHTML = feat.charAt(0).toUpperCase() + feat.slice(1) + ' | ' + feat.charAt(0).toUpperCase() + feat.slice(1);
   popStory.innerHTML = story;
-  popOfficial.innerHTML = 'Official Name: ' + '<a href="' + url + '">' + official + '</a>';
-  popTitle.style.fontWeight = 'bold';
+  popOfficial.innerHTML = 'Official Name: ' + '<a href="' + url + '" target="_blank">' + official + '</a>';
+  //popTitle.style.fontWeight = 'bold';
   //popStory.style.font = '1.0em Montserrat, sans-serif';
-  popFeat.style.fontStyle = 'italic';
+  //popFeat.style.fontStyle = 'italic';
   //popOfficial.style.font = '1.0em Montserrat, sans-serif';
 
   overlay.setPosition(coordinate);

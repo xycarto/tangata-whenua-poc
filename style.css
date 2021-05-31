@@ -1,3 +1,4 @@
+
 html, body {
   height:100%;
   padding:0;
@@ -6,6 +7,40 @@ html, body {
 
 .map {
   height: 100%;
+}
+
+hr {
+  width: 90%;
+  border: 0.5px solid #676767;
+}
+
+#popup {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#popup-content{
+  color: #393939;
+}
+
+#popTitle{
+  font-weight: bold;
+  font-size: 1.15em;
+}
+
+#popFeat{
+  font-style: italic;
+  font-size: 1.0em;
+  padding-bottom: 5px;
+  color: #555555;
+}
+
+#popStory{
+  font-size: 1.0em;
+  padding-bottom: 7px;
+}
+
+#popOfficial {
+  color: #555555;
 }
 
 .ol-popup {
