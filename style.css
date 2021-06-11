@@ -5,25 +5,23 @@ html, body {
   margin:0;
 }
 
+.title {
+  width: 100%;
+  height: 12%;
+  margin: auto;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  font-size: 2em;
+  color: #000000;
+}
+
 .map {
-  height: 100%;
-  position: relative;
+  height: 88%;
 }
 
 hr {
   width: 90%;
   border: 0.5px solid #676767;
-}
-
-.title {
-  position: absolute;
-  width: 100%;
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  font-size: 2em;
-  color: #ffffff;
-  background: rgba(30,44,51,0.15);
-  z-index: 2;
 }
 
 #popup {
@@ -96,8 +94,4 @@ hr {
 }
 .ol-popup-closer:after {
   content: "✖";
-}
-
-.ol-zoom {
-  top: 80%;
 }
