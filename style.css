@@ -5,6 +5,10 @@ html, body {
   margin:0;
 }
 
+a {
+  color: #4c7083;
+}
+
 #banner {
   height: 7vh;
   width: 100%;
@@ -39,23 +43,25 @@ hr {
 #popTitle{
   font-weight: bold;
   font-size: 1.15em;
+  color: #3a4449;
 }
 
 #popFeat{
   font-style: italic;
   font-size: 1.0em;
   padding-bottom: 5px;
-  color: #555555;
+  color: #515e65;
 }
 
 #popStory{
   font-size: 1.0em;
   padding-bottom: 7px;
+  color: #3a4449;
 }
 
 #popOfficial {
   font-size: 0.75em;
-  color: #555555;
+  color: #515e65;
 }
 
 .ol-popup {

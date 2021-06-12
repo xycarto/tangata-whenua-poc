@@ -99,12 +99,12 @@ var fill = new ol.style.Fill({
   color: '#392124'
 });
 var stroke = new ol.style.Stroke({
-  color: '#fcfaf9',
+  color: '#e9eced',
   width: 0.75,
 });
 
 var textStroke = new ol.style.Stroke({
-  color: '#fcfaf9',
+  color: '#e9eced',
   width: 2.25
 });
 
@@ -381,3 +381,14 @@ function showInfo(evt) {
 
   overlay.setPosition(coordinate);
 };
+
+map.on("pointermove", function (evt) {
+  var hit = this.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
+      return true;
+  }); 
+  if (hit) {
+      this.getTargetElement().style.cursor = 'pointer';
+  } else {
+      this.getTargetElement().style.cursor = '';
+  }
+});
