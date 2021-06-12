@@ -28,7 +28,6 @@ var overlay = new ol.Overlay({
   return false;
 }
 
-
 // set NZTM projection extent so OL can determine zoom level 0 extents.
 // Define NZTM projection
 proj4.defs("EPSG:2193","+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs");
@@ -67,12 +66,9 @@ var resolutions = [
 
 var matrixIds = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
-
-// Tile Services Map
+// Base map URL
 var urlTemplate =
 "https://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-rasterTiles/20210530/{z}/{x}/{y}.png";
-
-//var urlTemplate = "http://localhost:3030/POC/{z}/{x}/{y}.png"
 
 // Set raster layer
 var layer = new ol.layer.Tile({
@@ -90,10 +86,12 @@ var layer = new ol.layer.Tile({
   })
 });
 
-/*var getText = function(features) {
-  var text = features[0].getProperties().name;
-  return text;
-};*/
+// variables for styling vector tile labels and symbols. Not ideal, for POC only
+var font='1.3em Architects Daughter, cursive'
+var fontItalic='bold italic 1.3em Architects Daughter, cursive'
+var fontBay='italic 1.0em Architects Daughter, cursive'
+var fontHill='1.0em Architects Daughter, cursive'
+var fontSmallIsland='italic 1.0em Architects Daughter, cursive'
 
 var fill = new ol.style.Fill({
   color: '#565656'
@@ -115,12 +113,6 @@ var waterStroke = new ol.style.Stroke({
   color: '#e9eced',
   width: 2.5
 });
-
-var font='1.3em Architects Daughter, cursive'
-var fontItalic='bold italic 1.3em Architects Daughter, cursive'
-var fontBay='italic 1.0em Architects Daughter, cursive'
-var fontHill='1.0em Architects Daughter, cursive'
-var fontSmallIsland='italic 1.0em Architects Daughter, cursive'
 
 var waterStyle = new ol.style.Style({
   text: new ol.style.Text({
@@ -226,6 +218,8 @@ var peninsulaStyle = new ol.style.Style({
   }), 
 });
 
+// formatting vector tile labels to working in zoom scales. Set up only for POC. Better to have 
+// vector tile formatted properly
 var styleFunction = function(feature) {
   if ( feature.get('feat_type') == 'harbour') {
       waterStyle.getText().setText(feature.get('name'));
@@ -263,6 +257,7 @@ var styleFunction = function(feature) {
   }
 }; 
 
+// get vector tile and set perimeters
 var placeSource = new ol.source.VectorTile({
   cacheSize: 0,
   overlaps: true,
@@ -280,6 +275,7 @@ var placeSource = new ol.source.VectorTile({
   url: "https://d2o4hqdx74wbvi.cloudfront.net/tangataWhenua-vectorTiles/20210516/{z}/{x}/{y}.pbf"
 });
 
+// build vector tile layer
 var vectorMap = new ol.layer.VectorTile({
   declutter: true,
   allowOverlap: false,
@@ -316,6 +312,7 @@ var map = new ol.Map({
   })
 });
 
+// Get zoom and reso. Very helpful for testing
 map.on("moveend", function() {
   var zoom = map.getView().getZoom();
   console.log(zoom);
@@ -323,20 +320,13 @@ map.on("moveend", function() {
   console.log(reso);
 });
 
-
 // Add overlay for Popup window
 map.addOverlay(overlay);
 
-// Get JSON for vector tile styles and apply styling to vector tiles
-/*fetch('./styleText.json').then(function(response) {
-  response.json().then(function(glStyle) {
-    olms.applyStyle(vectorMap, glStyle, 'placeNames');
-  });
-});*/
-
-//Select Features
+// Select Features
 map.on('click', showInfo);
 
+// function to build popup window with vector tile feature information
 function showInfo(evt) {
   var coordinate = evt.coordinate;
   console.log(coordinate);
@@ -382,6 +372,7 @@ function showInfo(evt) {
   overlay.setPosition(coordinate);
 };
 
+// Change cursor to pointer if item is selectable
 map.on("pointermove", function (evt) {
   var hit = this.forEachFeatureAtPixel(evt.pixel, function(feature, layer) {
       return true;
@@ -392,3 +383,11 @@ map.on("pointermove", function (evt) {
       this.getTargetElement().style.cursor = '';
   }
 });
+
+// Unused for now, but may be helpful in the future
+// Get JSON for vector tile styles and apply styling to vector tiles
+/*fetch('./styleText.json').then(function(response) {
+  response.json().then(function(glStyle) {
+    olms.applyStyle(vectorMap, glStyle, 'placeNames');
+  });
+});*/
