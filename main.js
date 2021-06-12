@@ -15,7 +15,7 @@ var overlay = new ol.Overlay({
   autoPanAnimation: {
     duration: 250,
   },
-  autoPanMargin: 50,
+  autoPanMargin: 35,
 });
 
 /**
