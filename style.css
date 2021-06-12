@@ -21,16 +21,16 @@ a {
   text-align: center;
   text-shadow: 0 1px 4px rgba(0,0,0,0.2);
   font-size: 4.0vw;
-  color: #834c54;
+  color: #7b545b;
   padding: 5px;
-  border-bottom: 0.65vh solid #4c6f83;
+  border-bottom: 0.65vh solid #655e5f;
   background-color: #fbfcfd;
 }
 
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 2em;
-    border-bottom: 0.1em solid #4c6f83;
+    border-bottom: 0.1em solid #655e5f;
   }
 
   #banner {
@@ -124,5 +124,5 @@ hr {
 }
 
 .ol-control button {
-  background-color: #4c6f83;
+  background-color: rgba(86,86,86,0.40);
 }

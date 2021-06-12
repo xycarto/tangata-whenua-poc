@@ -96,7 +96,7 @@ var layer = new ol.layer.Tile({
 };*/
 
 var fill = new ol.style.Fill({
-  color: '#574548'
+  color: '#565656'
 });
 var stroke = new ol.style.Stroke({
   color: '#e9eced',
