@@ -96,15 +96,15 @@ var layer = new ol.layer.Tile({
 };*/
 
 var fill = new ol.style.Fill({
-  color: '#333333'
+  color: '#392124'
 });
 var stroke = new ol.style.Stroke({
-  color: '#e3e1d8',
+  color: '#fcfaf9',
   width: 0.75,
 });
 
 var textStroke = new ol.style.Stroke({
-  color: '#e3e1d8',
+  color: '#fcfaf9',
   width: 2.25
 });
 
@@ -337,8 +337,6 @@ map.addOverlay(overlay);
 //Select Features
 map.on('click', showInfo);
 
-
-
 function showInfo(evt) {
   var coordinate = evt.coordinate;
   console.log(coordinate);
@@ -366,6 +364,8 @@ function showInfo(evt) {
       return "Koutu";
     } else if ( features[0].getProperties().feat_type == 'bay') {
       return "Manga";
+    } else if ( features[0].getProperties().feat_type == 'pa site') {
+      return "Pa";
     }
   };
   

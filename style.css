@@ -15,7 +15,7 @@ html, body {
   font-family: 'Architects Daughter', cursive;
   text-align: center;
   font-size: 4.5vw;
-  color: #000000;
+  color: #834c54;
   padding: 5px;
 }
 
@@ -67,7 +67,7 @@ hr {
   border: 1px solid #cccccc;
   bottom: 20px;
   left: -150px;
-  min-width: 280px;
+  min-width: 200px;
 }
 .ol-popup:after, .ol-popup:before {
   top: 100%;
