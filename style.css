@@ -23,14 +23,14 @@ a {
   font-size: 4.0vw;
   color: #7b545b;
   padding: 5px;
-  border-bottom: 0.65vh solid #655e5f;
-  background-color: #fbfcfd;
+  border-bottom: 0.55vh solid #8a5e66;
+  background-color: #f6f7f8;
 }
 
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 2em;
-    border-bottom: 0.1em solid #655e5f;
+    border-bottom: 0.1em solid #8a5e66;
   }
 
   #banner {
