@@ -65,8 +65,8 @@ hr {
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #cccccc;
-  bottom: 12px;
-  left: -50px;
+  bottom: 20px;
+  left: -150px;
   min-width: 280px;
 }
 .ol-popup:after, .ol-popup:before {
@@ -81,13 +81,13 @@ hr {
 .ol-popup:after {
   border-top-color: white;
   border-width: 10px;
-  left: 48px;
+  left: 150px;
   margin-left: -10px;
 }
 .ol-popup:before {
   border-top-color: #cccccc;
   border-width: 11px;
-  left: 48px;
+  left: 150px;
   margin-left: -11px;
 }
 .ol-popup-closer {
@@ -98,4 +98,5 @@ hr {
 }
 .ol-popup-closer:after {
   content: "✖";
+  color: #555555;
 }

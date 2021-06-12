@@ -11,7 +11,7 @@ var popOfficial = document.getElementById('popOfficial');
 var overlay = new ol.Overlay({
   element: container,
   autoPan: true,
-  positioning: 'TOP_CENTER',
+  positioning: 'top-center',
   autoPanAnimation: {
     duration: 250,
   },
@@ -95,15 +95,15 @@ var layer = new ol.layer.Tile({
 };*/
 
 var fill = new ol.style.Fill({
-  color: '#e3e1d8'
+  color: '#333333'
 });
 var stroke = new ol.style.Stroke({
-  color: '#333333',
-  width: 0
+  color: '#e3e1d8',
+  width: 0.75,
 });
 
 var textStroke = new ol.style.Stroke({
-  color: '#333333',
+  color: '#e3e1d8',
   width: 2.25
 });
 
@@ -168,10 +168,7 @@ var hillStyle = new ol.style.Style({
   }), 
   image: new ol.style.RegularShape({
     fill: fill,
-    stroke: new ol.style.Stroke({
-      color: '#333333',
-      width: 0.5
-    }),
+    stroke: stroke,
     points: 3,
     radius: 4.5,
     angle: 0,
@@ -184,10 +181,7 @@ var pointStyle = new ol.style.Style({
   image: new ol.style.Circle({
       fill: fill,
       radius: 3,
-      stroke: new ol.style.Stroke({
-        color: '#333333',
-        width: 0.5
-      })
+      stroke: stroke
   }),
   text: new ol.style.Text({
     font: fontSmallIsland,
@@ -207,10 +201,7 @@ var paStyle = new ol.style.Style({
       fill: new ol.style.Fill({
         color: '#ac6f78'
       }),
-      stroke: new ol.style.Stroke({
-        color: '#333333',
-        width: 0.5
-      }),
+      stroke: stroke,
       radius: 4,
   }),
   text: new ol.style.Text({
@@ -345,6 +336,8 @@ map.addOverlay(overlay);
 //Select Features
 map.on('click', showInfo);
 
+
+
 function showInfo(evt) {
   var coordinate = evt.coordinate;
   console.log(coordinate);
@@ -357,22 +350,33 @@ function showInfo(evt) {
     return;
   }
 
-  console.log(features[0].getProperties().name);
+  function teReo() {
+    if ( features[0].getProperties().feat_type == 'harbour') {
+      return "Whanga";
+    } else if ( features[0].getProperties().feat_type == 'island') {
+      return "Motu";
+    } else if ( features[0].getProperties().feat_type == 'point') {
+      return "Kūrae";
+    } else if ( features[0].getProperties().feat_type == 'hill') {
+      return "Puke";
+    } else if ( features[0].getProperties().feat_type == 'stream') {
+      return "Manga";
+    } else if ( features[0].getProperties().feat_type == 'peninsula') {
+      return "Koutu";
+    } else if ( features[0].getProperties().feat_type == 'bay') {
+      return "Manga";
+    }
+  };
+  
   var title = features[0].getProperties().name;
   var feat = features[0].getProperties().feat_type;
   var story = features[0].getProperties().desc_text;
   var official = features[0].getProperties().offcl_name;
   var url = features[0].getProperties().url;
-  //popup.style.color = '#393939';
-  //popup.style.fontFamily = 'Montserrat, sans-serif';
   popTitle.innerHTML = title;
-  popFeat.innerHTML = feat.charAt(0).toUpperCase() + feat.slice(1) + ' | ' + feat.charAt(0).toUpperCase() + feat.slice(1);
+  popFeat.innerHTML = teReo() + ' | ' + feat.charAt(0).toUpperCase() + feat.slice(1);
   popStory.innerHTML = story;
   popOfficial.innerHTML = 'Official Name: ' + '<a href="' + url + '" target="_blank">' + official + '</a>';
-  //popTitle.style.fontWeight = 'bold';
-  //popStory.style.font = '1.0em Montserrat, sans-serif';
-  //popFeat.style.fontStyle = 'italic';
-  //popOfficial.style.font = '1.0em Montserrat, sans-serif';
 
   overlay.setPosition(coordinate);
 };
