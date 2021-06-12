@@ -363,7 +363,7 @@ function showInfo(evt) {
     } else if ( features[0].getProperties().feat_type == 'peninsula') {
       return "Koutu";
     } else if ( features[0].getProperties().feat_type == 'bay') {
-      return "Manga";
+      return "Whanga";
     } else if ( features[0].getProperties().feat_type == 'pā site') {
       return "Pā";
     }
