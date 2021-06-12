@@ -364,8 +364,8 @@ function showInfo(evt) {
       return "Koutu";
     } else if ( features[0].getProperties().feat_type == 'bay') {
       return "Manga";
-    } else if ( features[0].getProperties().feat_type == 'pa site') {
-      return "Pa";
+    } else if ( features[0].getProperties().feat_type == 'pā site') {
+      return "Pā";
     }
   };
   
