@@ -18,9 +18,11 @@ a {
 .title {  
   font-family: 'Architects Daughter', cursive;
   text-align: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
   font-size: 4.5vw;
   color: #834c54;
   padding: 5px;
+  border-bottom: 5px solid #3a4449;
 }
 
 .map {
