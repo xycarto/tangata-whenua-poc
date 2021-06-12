@@ -30,8 +30,8 @@ a {
 
 @media only screen and (max-width: 600px) {
   .title {
-    font-size: 2em;
-    font-weight:600;
+    font-size: 1.5em;
+    font-weight:400;
     border-bottom: 0.1em solid #7b545b;
   }
 
