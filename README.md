@@ -76,3 +76,14 @@ To run TREX with this config:
 ```
 t_rex generate --progress true --maxzoom=14 --minzoom=0 --extent=173.558476324834,-35.0551940745598,173.779941802033,-34.9135665847633  --config ~/tangata-whenua-poc/tRexConfig/placeNamesConfig.toml
 ```
+
+## Website
+
+The website for this project is developed around the usage of OpenLayer6.  Openlayers was chosen for its ease in handling custom projections and relatively advanced abilities in handling vector tile in and open source manner. It is important to note, this site is currently not developed using `webpack` or any project similar.  The developer understands the importance of developing sites in this manner; however, for the purposes of this project it was not undertaken.  Further development will incorporate best practices.
+
+## Notes
+
+- This site/project is not intended to make any claim or assert an authoritative name for a location. The site is intended to demonstrate the potential to develop a website aorund the NZGB Tangata Whenua Place Names Project.
+
+- The notes above are intended as a guideline for the reconstruction of the project.  Downloads, software installs, and a full reconstruction of the project are the responsibility of the reader.
+
