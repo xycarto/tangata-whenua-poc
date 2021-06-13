@@ -39,6 +39,10 @@ a {
     width: 100%;
     display: inline;
   }
+
+  .ol-popup {
+    min-width: 235px;
+  }
 }
 
 .map {
@@ -91,7 +95,7 @@ hr {
   border: 1px solid #cccccc;
   bottom: 20px;
   left: -150px;
-  min-width: 235px;
+  min-width: 350px;
 }
 .ol-popup:after, .ol-popup:before {
   top: 100%;
