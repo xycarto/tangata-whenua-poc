@@ -59,6 +59,20 @@ See https://github.com/xycarto/tangata-whenua-poc/tree/main/tilemill for Tilemil
 
 See https://github.com/xycarto/tangata-whenua-poc/tree/main/render for needed YAML files to render via MapProxy
 
+To run MapProxy render:
+
 ```
 mapproxy-seed --dry-run -f ~/tangata-whenua-poc/render/maptiles.tangataWhenua.yml -s ~/tangata-whenua-poc/render/seeds.tangataWhenua.yml -c 8 --progress-file .mapproxy_seed_pgress
+```
 
+## Vector Tiles
+
+Vector tiling is performed on the place names layers.  The place names layer has been modified form it original form to work best with this project.  The layer is initially uploaded to the Postgres database and TREX is used for the vector tiling.
+
+TREX is chosen for this project and its ablitiy to render vector tiles in vustom projections. See https://github.com/xycarto/tangata-whenua-poc/tree/main/tRexConfig for the config set up.
+
+To run TREX with this config:
+
+```
+t_rex generate --progress true --maxzoom=14 --minzoom=0 --extent=173.558476324834,-35.0551940745598,173.779941802033,-34.9135665847633  --config ~/tangata-whenua-poc/tRexConfig/placeNamesConfig.toml
+```
