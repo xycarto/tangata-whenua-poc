@@ -18,11 +18,23 @@ This site is only a proof of concept and functions as needed for the purposes of
 
 - The base map for this project is raster tile set up.  
 
-- Base data for this project is from LINZ Data Service, Landcare Research, and the New Zealand Geographic Board CC-BY 4.0.
+- Base data for this project is from LINZ Data Service, Landcare Research, New Zealand Minstery for the Environment, and the New Zealand Geographic Board CC-BY 4.0.
 
 ## Tools for base maps creation
 
-- MapProxy
-- TREX
-- Tilemill
-- Openlayers 6
+- [MapProxy](https://mapproxy.org/)
+- [TREX](https://t-rex.tileserver.ch/)
+- [Tilemill](https://github.com/schachmett/docker-tilemill)
+- [Openlayers6](https://openlayers.org/)
+- [PostgreSQl/PostGIS](https://postgis.net/)
+
+## Base Maps Data
+
+- Place names sample layer provided by NZGB
+- [LINZ 8m DEM](https://data.linz.govt.nz/layer/51768-nz-8m-digital-elevation-model-2012/)
+- [Land Cover Database 4.0](https://koordinates.com/from/lris.scinfo.org.nz/layer/48412/)
+- [MfE Riverflows](https://koordinates.com/from/data.mfe.govt.nz/layer/53309/)
+- [LINZ River Names Pilot](https://data.linz.govt.nz/layer/103632-nz-river-name-lines-pilot/)
+- [LINZ Coastline and Islands Polygons](https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/)
+
+
