@@ -1,0 +1,42 @@
+[service.mvt]
+viewer = true
+
+[[datasource]]
+dbconn = "postgresql://postgres:postgres@localhost/nz_data"
+name = "dbconn"
+default = true
+
+[grid.user]
+width = 4096
+height = 4096
+extent = { minx = -1000000, miny = 3087000, maxx = 3327000, maxy = 10000000 }
+srid = 2193
+units = "m"
+resolutions = [8960.0,4480.0,2240.0,1120.0,560.0,280.0,140.0,70.0,28.0,14.0,7.0,2.8,1.4,0.7,0.28,0.14,0.07]
+origin = "TopLeft"
+
+[[tileset]]
+name = "placenames_poc.placenames_poc"
+extent = [173.558476324834,-35.0551940745598,173.779941802033,-34.9135665847633]
+[[tileset.layer]]
+name = "placenames_poc.placenames_poc"
+table_name = "placenames_poc.placenames_poc"
+geometry_field = "geom"
+geometry_type = "POINT"
+srid = 2193
+buffer_size = 127
+#make_valid = true
+#simplify = true
+#query_limit = 1000
+
+[[tileset.layer.query]]
+sql = """SELECT * FROM placenames_poc.placenames_poc WHERE geom && !bbox!"""
+
+#resolutions = [8960.0,4480.0,2240.0,1120.0,560.0,280.0,140.0,70.0,28.0,14.0,7.0,2.8,1.4,0.7,0.28,0.14,0.07]
+
+[cache.file]
+base = "~/tangata-whenua-poc/vectorTiles"
+
+[webserver]
+bind = "0.0.0.0"
+port = 8080

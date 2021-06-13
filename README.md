@@ -43,10 +43,22 @@ This site is only a proof of concept and functions as needed for the purposes of
 
 Raster tile base maps are styled and developed using Tilemill. Tilemill for this project is accessed via Docker. Tilemill is utilized primarily for styling and producing Mapnik XML documents for rendering in MapProxy.  In this project, vector data for use in Tilemill is uploaded to a PostgreSQL data base. Psql is a much more efficient way to handle vectors for rendering.  
 
-Uploading vectors to PsoatgreSQL:
+### Postgres
+
+Uploading vectors to PostgreSQL:
 
 ```
 shp2pgsql -s 2193 /inSHP.shp schema.inSHP | psql -h <yourHost> -d <yourDB> -U <yourUserName>
 ```
 
-Tilemill will export the needed XML document.  
+### Tilemill
+
+See https://github.com/xycarto/tangata-whenua-poc/tree/main/tilemill for Tilemill project file. Note, you will need the modify the doucments to work with your database. Tilemill will export the needed XML document for use in MapProxy.
+
+### MapProxy
+
+See https://github.com/xycarto/tangata-whenua-poc/tree/main/render for needed YAML files to render via MapProxy
+
+```
+mapproxy-seed --dry-run -f ~/tangata-whenua-poc/render/maptiles.tangataWhenua.yml -s ~/tangata-whenua-poc/render/seeds.tangataWhenua.yml -c 8 --progress-file .mapproxy_seed_pgress
+
