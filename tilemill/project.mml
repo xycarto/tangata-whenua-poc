@@ -1,0 +1,467 @@
+{
+  "bounds": [
+    -180,
+    -85.0511,
+    180,
+    85.0511
+  ],
+  "center": [
+    0,
+    0,
+    2
+  ],
+  "format": "png24",
+  "interactivity": false,
+  "minzoom": 0,
+  "maxzoom": 22,
+  "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
+  "Stylesheet": [
+    "style.mss",
+    "vector"
+  ],
+  "Layer": [
+    {
+      "geometry": "polygon",
+      "extent": [
+        160.65738930029931,
+        -49.69837224301152,
+        179.855021427472,
+        -30.8270273912796
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select * from placenames_poc.bathy_coastalmatch_nztm) as bathy",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB",
+        "id": "bathy",
+        "project": "placenames_poc",
+        "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs "
+      },
+      "id": "bathy_clone_8093",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "bathy_clone_8093",
+      "layerId": "bathy_clone_8093"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -174.0078439264301,
+        -52.44484480363704,
+        165.4813865776018,
+        -29.230052473451927
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select geom\nfrom\nplacenames_poc.coastline_nztm) as coastpoly",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1089354.45701075,4162854.8142138,2490744.6488626,6731623.77630639",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "coastpoly",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "coastpoly",
+      "layerId": "coastpoly",
+      "status": "off"
+    },
+    {
+      "geometry": "raster",
+      "extent": [
+        166.25402883063958,
+        -47.23680655791811,
+        179.5013791314818,
+        -34.007967965723445
+      ],
+      "id": "nzall",
+      "class": "",
+      "Datasource": {
+        "file": "dem/nzAll.vrt",
+        "band": "1",
+        "type": "gdal"
+      },
+      "layer": null,
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {
+        "band": "1"
+      },
+      "name": "nzall",
+      "layerId": "nzall"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        166.26203755673575,
+        -47.23685200485688,
+        179.50138471441323,
+        -34.008228864865444
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select\ngeom\nfrom\nplacenames_poc.lcdb_v40_deprecated\nwhere\n\"name_2012\"='Indigenous Forest' OR\n\"name_2012\"='Fernland' OR\n\"name_2012\"='Exotic Forest' OR\n\"name_2012\"='Deciduous' OR\n\"name_2012\"='Forest - Harvested' OR\n\"name_2012\"='Manuka and/or Kanuka' OR\n\"name_2012\"='Gorse and/or Broom' OR\n\"name_2012\"='Depleted Grassland' OR\n\"name_2012\"='Low Producing Grassland' OR\n\"name_2012\"='Broadleaved Indigenous Hardwoods') as forest",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1089971.0008,4747978.9167,2092000,6223163.9849",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "forest",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "forest",
+      "layerId": "forest"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        166.26203755673575,
+        -47.23685200485688,
+        179.50138471441323,
+        -34.008228864865444
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select\nfeat_type, geom\nfrom\nplacenames_poc.nz_river_name_lines_pilot\nwhere\n\"feat_type\" = 'river_cl') as linzRiver",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1089971.0008,4747978.9167,2092000,6223163.9849",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "linzRiver",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "linzRiver",
+      "layerId": "linzRiver"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        166.26542707830416,
+        -47.23117375152049,
+        179.46253744211046,
+        -34.27575507060468
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select gid, \"order\", geom\nfrom\nplacenames_poc.river_flows\nwhere\n\"order\" > 1) as rivers",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1090153.49135138,4748854.76672438,2089113.644147,6193371.39545211",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "rivers",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "rivers",
+      "layerId": "rivers"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        166.28662633382535,
+        -47.062569452210724,
+        179.4427319285357,
+        -34.29643551152564
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select geom from placenames_poc.nz_river_polygons_topo_150k ) as riverpoly",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1090143.35675525,4767706.95352471,2089165.5705744,6191066.94732",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "riverpoly",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "riverpoly",
+      "layerId": "riverpoly"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        166.31479421597282,
+        -47.222885416912504,
+        179.45856889502747,
+        -34.30140069733119
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select lake_use, geom\nfrom\nplacenames_poc.nz_lake_polygons_topo_150k\nwhere\nlake_use IS null AND st_area(geom) >100000) as lake",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1093835.9166126,4749800.35038048,2088889.89142805,6190714.818995",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "lake",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "lake",
+      "layerId": "lake"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        166.31479421597282,
+        -47.222885416912504,
+        179.45856889502747,
+        -34.30140069733119
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select lake_use, geom\nfrom\nplacenames_poc.nz_lake_polygons_topo_150k\nwhere\nlake_use IS null AND st_area(geom) >6000) as lake",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1093835.9166126,4749800.35038048,2088889.89142805,6190714.818995",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "lake_clone_3187",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "lake_clone_3187",
+      "layerId": "lake_clone_3187",
+      "status": "off"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        166.41495200795745,
+        -47.20613654214878,
+        179.4028996966932,
+        -34.29693998979876
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select\ngeom\nfrom\nplacenames_poc.nz_swamp_polygons_topo_150k) as swamp",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1101284.28983345,4752009.25356335,2084830.56970114,6191612.67356646",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "swamp",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "swamp",
+      "layerId": "swamp",
+      "status": "off"
+    },
+    {
+      "geometry": "raster",
+      "extent": [
+        166.25402883063958,
+        -47.23680655791811,
+        179.5013791314818,
+        -34.007967965723445
+      ],
+      "id": "nzallhs",
+      "class": "",
+      "Datasource": {
+        "file": "hs/nzAllHS.vrt",
+        "band": "1",
+        "type": "gdal"
+      },
+      "layer": null,
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {
+        "band": "1"
+      },
+      "name": "nzallhs",
+      "layerId": "nzallhs"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        160.65738930029931,
+        -49.69837224301152,
+        179.855021427472,
+        -30.8270273912796
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select * from placenames_poc.bathy_coastalmatch_nztm) as bathy",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB",
+        "id": "bathy",
+        "project": "placenames_poc",
+        "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs "
+      },
+      "id": "bathy",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "bathy",
+      "layerId": "bathy"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        166.26203755673575,
+        -47.23685200485688,
+        179.50138471441323,
+        -34.008228864865444
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select\ngeom\nfrom\nplacenames_poc.lcdb_v40_deprecated\nwhere\n\"name_2012\"='Estuarine Open Water' OR\n\"name_2012\"='Mangrove' \n) as estuary",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1089971.0008,4747978.9167,2092000,6223163.9849",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "estuary",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "estuary",
+      "layerId": "estuary",
+      "status": "off"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        160.65738930029931,
+        -49.69837224301152,
+        179.855021427472,
+        -30.8270273912796
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select * from placenames_poc.bathy_coastalmatch_nztm) as bathy",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB",
+        "id": "bathy",
+        "project": "placenames_poc",
+        "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs "
+      },
+      "id": "bathy_clone_4384",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "bathy_clone_4384",
+      "layerId": "bathy_clone_4384"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        -174.0078439264301,
+        -52.44484480363704,
+        165.4813865776018,
+        -29.230052473451927
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select geom\nfrom\nplacenames_poc.coastline_nztm) as coastpoly",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "1089354.45701075,4162854.8142138,2490744.6488626,6731623.77630639",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "password": "yourPassword",
+        "dbname": "yourDB"
+      },
+      "id": "coastpoly_clone_4783",
+      "class": "",
+      "srs-name": "custom",
+      "srs": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ",
+      "advanced": {},
+      "name": "coastpoly_clone_4783",
+      "layerId": "coastpoly_clone_4783"
+    }
+  ],
+  "scale": 1,
+  "metatile": 4,
+  "name": "",
+  "description": "",
+  "attribution": ""
+}
