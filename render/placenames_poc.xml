@@ -66,11 +66,11 @@
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
       <Parameter name="id"><![CDATA[bathy]]></Parameter>
       <Parameter name="project"><![CDATA[placenames_poc]]></Parameter>
       <Parameter name="srs"><![CDATA[+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ]]></Parameter>
@@ -93,11 +93,11 @@ placenames_poc.coastline_nztm) as coastpoly]]></Parameter>
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1089354.45701075,4162854.8142138,2490744.6488626,6731623.77630639]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="nzall">
@@ -158,11 +158,11 @@ where
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1089971.0008,4747978.9167,2092000,6223163.9849]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="linzRiver">
@@ -190,11 +190,11 @@ where
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1089971.0008,4747978.9167,2092000,6223163.9849]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="rivers">
@@ -254,11 +254,11 @@ where
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1090153.49135138,4748854.76672438,2089113.644147,6193371.39545211]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="riverpoly">
@@ -276,11 +276,11 @@ where
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1090143.35675525,4767706.95352471,2089165.5705744,6191066.94732]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="lake">
@@ -302,11 +302,11 @@ lake_use IS null AND st_area(geom) >100000) as lake]]></Parameter>
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1093835.9166126,4749800.35038048,2088889.89142805,6190714.818995]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="lake_clone_3187">
@@ -328,11 +328,11 @@ lake_use IS null AND st_area(geom) >6000) as lake]]></Parameter>
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1093835.9166126,4749800.35038048,2088889.89142805,6190714.818995]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Layer name="swamp" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " status="off">
@@ -346,11 +346,11 @@ placenames_poc.nz_swamp_polygons_topo_150k) as swamp]]></Parameter>
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1101284.28983345,4752009.25356335,2084830.56970114,6191612.67356646]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="nzallhs">
@@ -423,11 +423,11 @@ placenames_poc.nz_swamp_polygons_topo_150k) as swamp]]></Parameter>
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
       <Parameter name="id"><![CDATA[bathy]]></Parameter>
       <Parameter name="project"><![CDATA[placenames_poc]]></Parameter>
       <Parameter name="srs"><![CDATA[+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ]]></Parameter>
@@ -448,11 +448,11 @@ where
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1089971.0008,4747978.9167,2092000,6223163.9849]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
   <Style filter-mode="first" name="bathy_clone_4384">
@@ -470,11 +470,11 @@ where
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
       <Parameter name="id"><![CDATA[bathy]]></Parameter>
       <Parameter name="project"><![CDATA[placenames_poc]]></Parameter>
       <Parameter name="srs"><![CDATA[+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ]]></Parameter>
@@ -497,11 +497,11 @@ placenames_poc.coastline_nztm) as coastpoly]]></Parameter>
       <Parameter name="geometry_field"><![CDATA[]]></Parameter>
       <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
       <Parameter name="extent"><![CDATA[1089354.45701075,4162854.8142138,2490744.6488626,6731623.77630639]]></Parameter>
-      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="host"><![CDATA[localhost]]></Parameter>
       <Parameter name="port"><![CDATA[5432]]></Parameter>
       <Parameter name="user"><![CDATA[postgres]]></Parameter>
-      <Parameter name="password"><![CDATA[postgres]]></Parameter>
-      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="password"><![CDATA[yourPassword]]></Parameter>
+      <Parameter name="dbname"><![CDATA[yourDB]]></Parameter>
     </Datasource>
   </Layer>
 </Map>

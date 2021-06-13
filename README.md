@@ -27,6 +27,7 @@ This site is only a proof of concept and functions as needed for the purposes of
 - [Tilemill](https://github.com/schachmett/docker-tilemill)
 - [Openlayers6](https://openlayers.org/)
 - [PostgreSQl/PostGIS](https://postgis.net/)
+- [shp2pgsql](https://manpages.ubuntu.com/manpages/bionic/man1/shp2pgsql.1.html)
 
 ## Base Maps Data
 
@@ -38,3 +39,12 @@ This site is only a proof of concept and functions as needed for the purposes of
 - [LINZ Coastline and Islands Polygons](https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/)
 
 
+## Raster tiles
+
+Raster tile base maps are styled and developed using Tilemill. Tilemill for this project is accessed via Docker. Tilemill is utilized primarily for styling and producing Mapnik XML documents for rendering in MapProxy.  In this project, vector data for use in Tilemill is uploaded to a PostgreSQL data base. Psql is a much more efficient way to handle vectors for rendering.  
+
+Uploading vectos to PsoatgreSQL:
+
+```
+shp2pgsql -s 2193 /inSHP.shp schema.inSHP | psql -h <yourHost> -d <yourDB> -U <yourUserName>
+```
