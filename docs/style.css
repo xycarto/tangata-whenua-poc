@@ -28,25 +28,6 @@ a {
   background-color: #f6f7f8;
 }
 
-@media only screen and (max-width: 600px) {
-  .title {
-    font-size: 1.5em;
-    font-weight:400;
-    border-bottom: 0.1em solid #7b545b;
-  }
-
-  #banner {
-    width: 100%;
-    display: inline;
-  }
-
-  .ol-popup {
-    min-width: 235px;
-    overflow: auto;
-    max-height: 400px;
-  }
-}
-
 .map {
   height: 93vh;
 }
@@ -86,6 +67,7 @@ hr {
 #popOfficial {
   font-size: 0.75em;
   color: #515e65;
+  padding-top: 10px;
 }
 
 .ol-popup {
@@ -97,7 +79,7 @@ hr {
   border: 1px solid #cccccc;
   bottom: 20px;
   left: -150px;
-  min-width: 350px;
+  width: 300px;
 }
 .ol-popup:after, .ol-popup:before {
   top: 100%;
@@ -133,4 +115,27 @@ hr {
 
 .ol-control button {
   background-color: rgba(86,86,86,0.40);
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-size: 1.5em;
+    font-weight:400;
+    border-bottom: 0.1em solid #7b545b;
+  }
+
+  #banner {
+    width: 100%;
+    display: inline;
+  }
+
+  .ol-popup {
+    width: 235px;
+    max-height: 275px;
+  }
+  
+  #popStory{  
+    max-height: 150px;  
+    overflow: auto;
+  }
 }
