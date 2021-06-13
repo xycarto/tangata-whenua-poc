@@ -1,0 +1,110 @@
+globals:
+  image:
+    paletted: false
+    formats:
+      image/png:
+        colors: 0
+        resampling_method: bicubic
+        mode: RGB  # P
+        transparent: true
+        encoding_options:
+          quantizer: mediancut  # fastoctree
+     
+      image/jpeg:
+        mode: RGB
+        encoding_options:
+          jpeg_quality: 100
+
+  cache:
+    base_dir: ~/tangata-whenua-poc/tiles/POC
+
+  srs:
+    # for North/East ordering
+    axis_order_ne: ['EPSG:2193']
+    axis_order_en: ['EPSG:4326']
+
+
+services:
+  wms:
+    versions: ['1.1.1', '1.3.0']
+    image_formats: ['image/png', 'image/jpeg']
+    srs: ['EPSG:4326', 'EPSG:3857', 'EPSG:2193']
+    bbox_srs:
+      - srs: 'EPSG:4326'
+        bbox: [166.392970, -47.335115, 178.554238, -34.391335]
+      - srs: 'CRS:84'
+        bbox: [166.392970, -47.335115, 178.554238, -34.391335]
+      - 'EPSG:3857'
+      - srs: 'EPSG:2193'
+        bbox: [274000, 3087000, 3327000, 7173000]
+    md:
+        title: Tangata Whenua POC Map
+        abstract: Mapping Service provided by XYCarto
+        online_resource: http://xycarto.com
+        contact:
+            person: I Reese
+            position: N/A
+            organization: XYCarto
+            address: Lyall Bay
+            city: Wellington
+            postcode: 6022
+            country: New Zealand
+            phone: N/A
+            fax: N/A
+            email: ian@xycarto.com
+        access_constraints:
+            None
+        fees:
+            None
+
+  demo:
+
+  tms:
+
+  wmts:
+    kvp: false
+    restful: true
+    restful_template: /1.0.0/{Layer}/{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.{Format}
+
+
+grids:
+  GLOBAL_MERCATOR:
+    srs: EPSG:3857
+    origin: sw
+
+  GLOBAL_WEBMERCATOR:
+    srs: EPSG:3857
+    origin: nw
+
+  NZTM:
+    srs: EPSG:2193
+    origin: nw
+    bbox_srs: EPSG:2193
+    bbox: [-1000000, 3087000, 3327000, 10000000]
+    res:  [8960, 4480, 2240, 1120, 560, 280, 140, 70, 28, 14, 7, 2.8, 1.4, 0.7, 0.28, 0.14, 0.07]
+    tile_size: [256, 256]
+
+
+sources:
+  nz_basemap_nztm_source:
+    type: mapnik
+    mapfile: ~/tangata-whenua-poc/render/placenames_poc.xml
+    transparent: false
+
+caches:
+  nz_basemap_nztm_cache:
+    format: image/png
+    sources: [nz_basemap_nztm_source]
+    grids: [NZTM]
+    cache:
+      type: file
+      directory_layout: tms
+      directory: '~/tangata-whenua-poc/tiles/POC'
+
+
+layers:
+  - name: nz_basemap_nztm
+    title: Tangata Whenua POC
+    sources: [nz_basemap_nztm_cache]
+    tile_sources: [nz_basemap_nztm_cache]
+

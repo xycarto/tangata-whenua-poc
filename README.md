@@ -4,6 +4,8 @@ https://xycarto.github.io/tangata-whenua-poc/
 
 Site is developed using NZTM projection (ESPG:2193). As of yet, no WMTS is available for the base layers.
 
+Website code is found under the `docs` directory of this repo.
+
 ## Repo Information
 
 This site is only a proof of concept and functions as needed for the purposes of the site delivery. 
@@ -16,7 +18,7 @@ This site is only a proof of concept and functions as needed for the purposes of
 
 - The base map for this project is raster tile set up.  
 
-- Base data for this project is from LINZ Data Service and the New Zealand Geographic Board CC-BY 4.0.
+- Base data for this project is from LINZ Data Service, Landcare Research, and the New Zealand Geographic Board CC-BY 4.0.
 
 ## Tools for base maps creation
 

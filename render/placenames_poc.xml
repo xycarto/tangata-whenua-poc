@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Map[]>
+<Map background-color="#ffffff" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs">
+  <Parameters>
+    <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
+    <Parameter name="center">0,0,2</Parameter>
+    <Parameter name="format"><![CDATA[png24]]></Parameter>
+    <Parameter name="minzoom">0</Parameter>
+    <Parameter name="maxzoom">22</Parameter>
+    <Parameter name="scale">1</Parameter>
+    <Parameter name="metatile">4</Parameter>
+    <Parameter name="id"><![CDATA[placenames_poc]]></Parameter>
+    <Parameter name="_updated">1622339942000</Parameter>
+    <Parameter name="tilejson"><![CDATA[2.0.0]]></Parameter>
+    <Parameter name="scheme"><![CDATA[xyz]]></Parameter>
+  </Parameters>
+  <Style filter-mode="first" name="bathy_clone_8093">
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([drval2] > 1000) and ([drval2] <= 3000)]]></Filter>
+      <PolygonSymbolizer fill="#b6ccd9" fill-opacity="1" />
+      <LineSymbolizer stroke="#b6ccd9" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([drval2] > 500) and ([drval2] <= 1000)]]></Filter>
+      <PolygonSymbolizer fill="#c3d5df" fill-opacity="1" />
+      <LineSymbolizer stroke="#c3d5df" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([drval2] > 250) and ([drval2] <= 500)]]></Filter>
+      <PolygonSymbolizer fill="#d0dee6" fill-opacity="1" />
+      <LineSymbolizer stroke="#d0dee6" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([drval2] > 100) and ([drval2] <= 250)]]></Filter>
+      <PolygonSymbolizer fill="#e9f0f4" fill-opacity="1" />
+      <LineSymbolizer stroke="#e9f0f4" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([drval2] > 3000)]]></Filter>
+      <PolygonSymbolizer fill="#77a0b8" fill-opacity="1" />
+      <LineSymbolizer stroke="#77a0b8" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([drval2] <= 100)]]></Filter>
+      <PolygonSymbolizer fill="#f6f9fa" fill-opacity="1" />
+      <LineSymbolizer stroke="#f6f9fa" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <LineSymbolizer stroke="rgba(0, 0, 0, 0)" />
+      <PolygonSymbolizer fill="#aaee88" fill-opacity="1" />
+    </Rule>
+  </Style>
+  <Layer name="bathy_clone_8093" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[bathy_clone_8093]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select * from placenames_poc.bathy_coastalmatch_nztm) as bathy]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="id"><![CDATA[bathy]]></Parameter>
+      <Parameter name="project"><![CDATA[placenames_poc]]></Parameter>
+      <Parameter name="srs"><![CDATA[+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="coastpoly">
+    <Rule>
+      <LineSymbolizer stroke="#dce6d1" stroke-width="0" />
+      <PolygonSymbolizer fill="#ffffff" fill-opacity="1" />
+    </Rule>
+  </Style>
+  <Layer name="coastpoly" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " status="off">
+    <StyleName><![CDATA[coastpoly]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select geom
+from
+placenames_poc.coastline_nztm) as coastpoly]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1089354.45701075,4162854.8142138,2490744.6488626,6731623.77630639]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="nzall">
+    <Rule>
+      <RasterSymbolizer default-color="rgba(0, 0, 0, 0)" default-mode="linear" opacity="1" scaling="gaussian">
+        <stop color="#659166" value="0" />
+        <stop color="#749e75" value="50" />
+        <stop color="#dfe6dc" value="500" />
+      </RasterSymbolizer>
+    </Rule>
+  </Style>
+  <Layer name="nzall" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[nzall]]></StyleName>
+    <Datasource>
+      <Parameter name="file"><![CDATA[~/Documents/MapBox/project/placenames_poc/dem/nzAll.vrt]]></Parameter>
+      <Parameter name="band"><![CDATA[1]]></Parameter>
+      <Parameter name="type"><![CDATA[gdal]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="forest">
+    <Rule>
+      <MaxScaleDenominator>200000</MaxScaleDenominator>
+      <PolygonSymbolizer fill="#507351" fill-opacity="1" />
+      <LineSymbolizer stroke="#507351" stroke-width="0.5" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>750000</MaxScaleDenominator>
+      <MinScaleDenominator>200000</MinScaleDenominator>
+      <PolygonSymbolizer fill="#507351" fill-opacity="1" />
+      <LineSymbolizer stroke="#507351" stroke-width="0.35" />
+    </Rule>
+    <Rule>
+      <MinScaleDenominator>750000</MinScaleDenominator>
+      <PolygonSymbolizer fill="#507351" fill-opacity="1" />
+      <LineSymbolizer stroke="#507351" stroke-width="0.1" />
+    </Rule>
+  </Style>
+  <Layer name="forest" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[forest]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select
+geom
+from
+placenames_poc.lcdb_v40_deprecated
+where
+"name_2012"='Indigenous Forest' OR
+"name_2012"='Fernland' OR
+"name_2012"='Exotic Forest' OR
+"name_2012"='Deciduous' OR
+"name_2012"='Forest - Harvested' OR
+"name_2012"='Manuka and/or Kanuka' OR
+"name_2012"='Gorse and/or Broom' OR
+"name_2012"='Depleted Grassland' OR
+"name_2012"='Low Producing Grassland' OR
+"name_2012"='Broadleaved Indigenous Hardwoods') as forest]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1089971.0008,4747978.9167,2092000,6223163.9849]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="linzRiver">
+    <Rule>
+      <MaxScaleDenominator>25000</MaxScaleDenominator>
+      <LineSymbolizer stroke="#c3d5df" stroke-opacity="1" stroke-width="0.5" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>50000</MaxScaleDenominator>
+      <MinScaleDenominator>25000</MinScaleDenominator>
+      <LineSymbolizer stroke="#c3d5df" stroke-opacity="1" stroke-width="0.25" />
+    </Rule>
+  </Style>
+  <Layer name="linzRiver" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[linzRiver]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select
+feat_type, geom
+from
+placenames_poc.nz_river_name_lines_pilot
+where
+"feat_type" = 'river_cl') as linzRiver]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1089971.0008,4747978.9167,2092000,6223163.9849]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="rivers">
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <MinScaleDenominator>50000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2) and ([order] > 3)]]></Filter>
+      <LineSymbolizer smooth="0.9" stroke="#c3d5df" stroke-width="[order]/25" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>200000</MaxScaleDenominator>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2) and ([order] > 3)]]></Filter>
+      <LineSymbolizer smooth="0.9" stroke="#c3d5df" stroke-width="[order]/35" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>400000</MaxScaleDenominator>
+      <MinScaleDenominator>200000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2) and ([order] > 3)]]></Filter>
+      <LineSymbolizer smooth="0.9" stroke="#c3d5df" stroke-width="[order]/18" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>1500000</MaxScaleDenominator>
+      <MinScaleDenominator>400000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2) and ([order] > 3)]]></Filter>
+      <LineSymbolizer stroke="#c3d5df" stroke-width="[order]/35" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <MinScaleDenominator>50000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2)]]></Filter>
+      <LineSymbolizer smooth="0.9" stroke="#c3d5df" stroke-width="[order]/25" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>200000</MaxScaleDenominator>
+      <MinScaleDenominator>100000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2)]]></Filter>
+      <LineSymbolizer smooth="0.9" stroke="#c3d5df" stroke-width="[order]/35" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>400000</MaxScaleDenominator>
+      <MinScaleDenominator>200000</MinScaleDenominator>
+      <Filter><![CDATA[([order] >= 2)]]></Filter>
+      <LineSymbolizer smooth="0.9" stroke="#c3d5df" stroke-width="[order]/18" />
+    </Rule>
+  </Style>
+  <Layer name="rivers" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[rivers]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select gid, "order", geom
+from
+placenames_poc.river_flows
+where
+"order" > 1) as rivers]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1090153.49135138,4748854.76672438,2089113.644147,6193371.39545211]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="riverpoly">
+    <Rule>
+      <MaxScaleDenominator>25000000</MaxScaleDenominator>
+      <PolygonSymbolizer fill="#c3d5df" fill-opacity="1" />
+    </Rule>
+  </Style>
+  <Layer name="riverpoly" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[riverpoly]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select geom from placenames_poc.nz_river_polygons_topo_150k ) as riverpoly]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1090143.35675525,4767706.95352471,2089165.5705744,6191066.94732]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="lake">
+    <Rule>
+      <MinScaleDenominator>200000</MinScaleDenominator>
+      <PolygonSymbolizer fill="#dde7ed" fill-opacity="1" />
+    </Rule>
+  </Style>
+  <Layer name="lake" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[lake]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select lake_use, geom
+from
+placenames_poc.nz_lake_polygons_topo_150k
+where
+lake_use IS null AND st_area(geom) >100000) as lake]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1093835.9166126,4749800.35038048,2088889.89142805,6190714.818995]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="lake_clone_3187">
+    <Rule>
+      <MaxScaleDenominator>200000</MaxScaleDenominator>
+      <PolygonSymbolizer fill="#dde7ed" fill-opacity="1" />
+    </Rule>
+  </Style>
+  <Layer name="lake_clone_3187" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " status="off">
+    <StyleName><![CDATA[lake_clone_3187]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select lake_use, geom
+from
+placenames_poc.nz_lake_polygons_topo_150k
+where
+lake_use IS null AND st_area(geom) >6000) as lake]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1093835.9166126,4749800.35038048,2088889.89142805,6190714.818995]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Layer name="swamp" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " status="off">
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select
+geom
+from
+placenames_poc.nz_swamp_polygons_topo_150k) as swamp]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1101284.28983345,4752009.25356335,2084830.56970114,6191612.67356646]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="nzallhs">
+    <Rule>
+      <RasterSymbolizer comp-op="multiply" default-color="rgba(0, 0, 0, 0)" default-mode="linear" opacity="0.3" scaling="gaussian">
+        <stop color="#000000" value="0" />
+        <stop color="#000000" value="100" />
+        <stop color="#ffffff" value="225" />
+        <stop color="#ffffff" value="255" />
+      </RasterSymbolizer>
+    </Rule>
+  </Style>
+  <Layer name="nzallhs" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[nzallhs]]></StyleName>
+    <Datasource>
+      <Parameter name="file"><![CDATA[~/Documents/MapBox/project/placenames_poc/hs/nzAllHS.vrt]]></Parameter>
+      <Parameter name="band"><![CDATA[1]]></Parameter>
+      <Parameter name="type"><![CDATA[gdal]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="bathy">
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter><![CDATA[([drval2] > 1000) and ([drval2] <= 3000)]]></Filter>
+      <PolygonSymbolizer fill="#adc5c6" fill-opacity="1" />
+      <LineSymbolizer stroke="#adc5c6" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter><![CDATA[([drval2] > 500) and ([drval2] <= 1000)]]></Filter>
+      <PolygonSymbolizer fill="#c4d6d6" fill-opacity="1" />
+      <LineSymbolizer stroke="#c4d6d6" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter><![CDATA[([drval2] > 250) and ([drval2] <= 500)]]></Filter>
+      <PolygonSymbolizer fill="#d0dede" fill-opacity="1" />
+      <LineSymbolizer stroke="#d0dede" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter><![CDATA[([drval2] > 100) and ([drval2] <= 250)]]></Filter>
+      <PolygonSymbolizer fill="#e7eeee" fill-opacity="1" />
+      <LineSymbolizer stroke="#e7eeee" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter><![CDATA[([drval2] > 3000)]]></Filter>
+      <PolygonSymbolizer fill="#729c9d" fill-opacity="1" />
+      <LineSymbolizer stroke="#729c9d" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <Filter><![CDATA[([drval2] <= 100)]]></Filter>
+      <PolygonSymbolizer fill="#f3f6f6" fill-opacity="1" />
+      <LineSymbolizer stroke="#f3f6f6" />
+    </Rule>
+    <Rule>
+      <MaxScaleDenominator>100000</MaxScaleDenominator>
+      <LineSymbolizer stroke="rgba(0, 0, 0, 0)" />
+      <PolygonSymbolizer fill="#aaee88" fill-opacity="1" />
+    </Rule>
+  </Style>
+  <Layer name="bathy" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[bathy]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select * from placenames_poc.bathy_coastalmatch_nztm) as bathy]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="id"><![CDATA[bathy]]></Parameter>
+      <Parameter name="project"><![CDATA[placenames_poc]]></Parameter>
+      <Parameter name="srs"><![CDATA[+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Layer name="estuary" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " status="off">
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select
+geom
+from
+placenames_poc.lcdb_v40_deprecated
+where
+"name_2012"='Estuarine Open Water' OR
+"name_2012"='Mangrove' 
+) as estuary]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1089971.0008,4747978.9167,2092000,6223163.9849]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="bathy_clone_4384">
+    <Rule>
+      <LineSymbolizer stroke="rgba(0, 0, 0, 0)" />
+      <PolygonPatternSymbolizer comp-op="multiply" file="textures/watertexture.jpg" opacity="0.5" />
+    </Rule>
+  </Style>
+  <Layer name="bathy_clone_4384" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[bathy_clone_4384]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select * from placenames_poc.bathy_coastalmatch_nztm) as bathy]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[705469.263869779,4455095.36611155,2255275.4711994,6552022.52770844]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+      <Parameter name="id"><![CDATA[bathy]]></Parameter>
+      <Parameter name="project"><![CDATA[placenames_poc]]></Parameter>
+      <Parameter name="srs"><![CDATA[+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ]]></Parameter>
+    </Datasource>
+  </Layer>
+  <Style filter-mode="first" name="coastpoly_clone_4783-line">
+    <Rule>
+      <MaxScaleDenominator>1500000</MaxScaleDenominator>
+      <LineSymbolizer stroke="#e9f0f4" stroke-width="1" />
+    </Rule>
+  </Style>
+  <Layer name="coastpoly_clone_4783" srs="+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs ">
+    <StyleName><![CDATA[coastpoly_clone_4783-line]]></StyleName>
+    <Datasource>
+      <Parameter name="type"><![CDATA[postgis]]></Parameter>
+      <Parameter name="table"><![CDATA[(select geom
+from
+placenames_poc.coastline_nztm) as coastpoly]]></Parameter>
+      <Parameter name="key_field"><![CDATA[]]></Parameter>
+      <Parameter name="geometry_field"><![CDATA[]]></Parameter>
+      <Parameter name="extent_cache"><![CDATA[auto]]></Parameter>
+      <Parameter name="extent"><![CDATA[1089354.45701075,4162854.8142138,2490744.6488626,6731623.77630639]]></Parameter>
+      <Parameter name="host"><![CDATA[ireese]]></Parameter>
+      <Parameter name="port"><![CDATA[5432]]></Parameter>
+      <Parameter name="user"><![CDATA[postgres]]></Parameter>
+      <Parameter name="password"><![CDATA[postgres]]></Parameter>
+      <Parameter name="dbname"><![CDATA[nz_data]]></Parameter>
+    </Datasource>
+  </Layer>
+</Map>

@@ -1,0 +1,42 @@
+seeds:
+  nz_basemap_nztm_grid:
+    caches: [nz_basemap_nztm_cache]
+    grids: [NZTM]
+    levels:
+      to: 4
+  nz_basemap_nztm_offshore:
+    caches: [nz_basemap_nztm_cache]
+    grids: [NZTM]
+    coverages: [nz_northIsland]
+    levels:
+      from: 5
+      to: 6
+  nz_basemap_nztm_northIsland:
+    caches: [nz_basemap_nztm_cache]
+    grids: [NZTM]
+    coverages: [nz_farNorth]
+    levels:
+      from: 7
+      to: 8
+  nz_basemap_nztm_farNorth:
+    caches: [nz_basemap_nztm_cache]
+    grids: [NZTM]
+    coverages: [nz_whangareiReinga]
+    levels:
+      from: 9
+      to: 11
+  
+coverages:
+  nz_offshore:
+    datasource: '~/tangata-whenua-poc/render/coverages/nz_offshore.wkt'
+    srs: 'EPSG:4326'
+  nz_northIsland:
+    datasource: '~/tangata-whenua-poc/render/coverages/northIsland.wkt'
+    srs: 'EPSG:4326'
+  nz_farNorth:
+    datasource: '~/tangata-whenua-poc/render/coverages/farNorth.wkt'
+    srs: 'EPSG:4326'
+  nz_whangareiReinga:
+    datasource: '~/tangata-whenua-poc/render/coverages/whangarei-regina-region.wkt'
+    srs: 'EPSG:4326'
+  
