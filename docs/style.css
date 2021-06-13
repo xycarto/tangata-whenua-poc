@@ -42,6 +42,8 @@ a {
 
   .ol-popup {
     min-width: 235px;
+    overflow: auto;
+    max-height: 400px;
   }
 }
 
