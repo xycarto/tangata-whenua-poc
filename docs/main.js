@@ -87,11 +87,11 @@ var layer = new ol.layer.Tile({
 });
 
 // variables for styling vector tile labels and symbols. Not ideal, for POC only
-var font='1.3em Architects Daughter, cursive'
-var fontItalic='bold italic 1.3em Architects Daughter, cursive'
-var fontBay='italic 1.0em Architects Daughter, cursive'
-var fontHill='1.0em Architects Daughter, cursive'
-var fontSmallIsland='italic 1.0em Architects Daughter, cursive'
+var font='800 1.6em Architects Daughter, cursive'
+var fontItalic='bold italic 1.6em Architects Daughter, cursive'
+var fontBay='bold italic 1.4em Architects Daughter, cursive'
+var fontHill='bold 1.4em Architects Daughter, cursive'
+var fontSmallIsland='bold italic 1.4em Architects Daughter, cursive'
 
 var fill = new ol.style.Fill({
   color: '#565656'
@@ -100,12 +100,10 @@ var stroke = new ol.style.Stroke({
   color: '#e9eced',
   width: 0.75,
 });
-
 var textStroke = new ol.style.Stroke({
   color: '#e9eced',
   width: 2.25
 });
-
 var waterFill = new ol.style.Fill({
   color: '#4c6f83'
 });
@@ -115,6 +113,7 @@ var waterStroke = new ol.style.Stroke({
 });
 
 var waterStyle = new ol.style.Style({
+  zIndex: 50,
   text: new ol.style.Text({
     placement: 'point',
     fill: waterFill,
@@ -127,23 +126,43 @@ var waterStyle = new ol.style.Style({
 
 var bayStyle = new ol.style.Style({
   zIndex:5,
+  image: new ol.style.Circle({
+      fill: new ol.style.Fill({
+        color: '#4c6f83'
+      }),
+      stroke: stroke,
+      radius: 5,
+  }),
   text: new ol.style.Text({
     font: fontBay,
     placement: 'point',
     fill: waterFill,
     stroke: waterStroke,
     textAlign: 'center',
+    offsetY: -20.0,
     padding: [15,15,15,15]
   }), 
 });
 
 var islandStyle = new ol.style.Style({
+  zIndex:30,
     text: new ol.style.Text({
+      font: font,
       placement: 'point',
       fill: fill,
       stroke: textStroke,
-      textAlign: 'center'
-    }), 
+      textAlign: 'left',
+      offsetX: 25.0,
+      offsetY: -10.0,
+      padding: [10,10,10,10]
+    }),
+    image: new ol.style.RegularShape({
+      fill: fill,
+      stroke: stroke,
+      points: 4,
+      radius: 6.0,
+      angle: Math.PI / 4,
+    })
 });
 
 var hillStyle = new ol.style.Style({
@@ -153,17 +172,15 @@ var hillStyle = new ol.style.Style({
     placement: 'point',
     fill: fill,
     stroke: textStroke,
+    offsetX: 33.0,
     textAlign: 'left',
-    textBaseline: 'bottom',
-    offsetX: 15.0,
-    offsetY: -1.5,
     padding: [10,10,10,10]
   }), 
   image: new ol.style.RegularShape({
     fill: fill,
     stroke: stroke,
     points: 3,
-    radius: 4.5,
+    radius: 6.0,
     angle: 0,
   })
 });
@@ -173,7 +190,7 @@ var pointStyle = new ol.style.Style({
   stroke: stroke,
   image: new ol.style.Circle({
       fill: fill,
-      radius: 3,
+      radius: 5,
       stroke: stroke
   }),
   text: new ol.style.Text({
@@ -182,9 +199,8 @@ var pointStyle = new ol.style.Style({
     fill: fill,
     stroke: textStroke,
     textAlign: 'right',
-    textBaseline: 'bottom',
-    offsetX: -15.0,
-    offsetY: -2.0,
+    offsetX: -32.0,
+    padding: [10,10,10,10]
   }), 
 });
 
@@ -195,7 +211,7 @@ var paStyle = new ol.style.Style({
         color: '#ac6f78'
       }),
       stroke: stroke,
-      radius: 4,
+      radius: 5,
   }),
   text: new ol.style.Text({
     font: fontHill,
@@ -203,9 +219,8 @@ var paStyle = new ol.style.Style({
     fill: fill,
     stroke: textStroke,
     textAlign: 'right',
-    textBaseline: 'bottom',
-    offsetX: -15.0,
-    offsetY: -2.0,
+    offsetX: -32.0,
+    padding: [10,10,10,10]
   }), 
 });
 
@@ -215,6 +230,7 @@ var peninsulaStyle = new ol.style.Style({
     placement: 'point',
     fill: fill,
     stroke: textStroke,
+    padding: [10,10,10,10]
   }), 
 });
 
@@ -358,6 +374,14 @@ function showInfo(evt) {
       return "Pā";
     }
   };
+
+  function replacePa(feat) {
+    if ( features[0].getProperties().feat_type == 'pā site' ) {
+      return "Pā";
+    } else {
+      return feat.charAt(0).toUpperCase() + feat.slice(1)
+    } 
+  };
   
   var title = features[0].getProperties().name;
   var feat = features[0].getProperties().feat_type;
@@ -365,7 +389,7 @@ function showInfo(evt) {
   var official = features[0].getProperties().offcl_name;
   var url = features[0].getProperties().url;
   popTitle.innerHTML = title;
-  popFeat.innerHTML = teReo() + ' | ' + feat.charAt(0).toUpperCase() + feat.slice(1);
+  popFeat.innerHTML = teReo() + '<span class="nonItl">' + ' | ' + '</span>' + replacePa(feat);
   popStory.innerHTML = story;
   popOfficial.innerHTML = 'Official Name: ' + '<a href="' + url + '" target="_blank">' + official + '</a>';
 

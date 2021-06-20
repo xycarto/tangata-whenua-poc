@@ -10,6 +10,10 @@ a {
   color: #4c7083;
 }
 
+.nonItl {
+  font-style: normal;
+}
+
 #banner {
   height: 7vh;
   width: 100%;
@@ -22,9 +26,9 @@ a {
   text-shadow: 0 1px 4px rgba(0,0,0,0.2);
   font-size: 4.0vw;
   font-weight:500;
-  color: #7b545b;
+  color: #a56643;
   padding: 5px;
-  border-bottom: 0.55vh solid #7b545b;
+  border-bottom: 0.55vh solid #a56643;
   background-color: #f6f7f8;
 }
 
